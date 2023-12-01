@@ -2,9 +2,92 @@
 
     &>main {
         padding: 0 var(--padding-desktop-horizontal);
+    
+        // Teintes de violet (bg) alternées entre chaque saison
+        &>article:nth-child(even){
+            background-color: rgba(var(--color-primary), 0.8);
+        }
+        &>article:nth-child(odd) {
+            background-color: rgb(var(--color-primary));
+        }
 
-        h1 {
-            
+        // Style global des cadres de présentation des saisons
+        &>article {
+            color: black;
+
+            padding: 1rem;
+            margin: 2.5rem 0;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+
+            border-radius: var(--border-radius);
+
+            // Deux parties
+            &>div {
+                display: flex;
+                flex-direction: column;
+
+                gap: 1rem;
+            }
+
+            // Partie de gauche
+            &>div:first-child {
+
+                align-items: center;
+
+                // N° saison
+                &>p:first-child {
+
+                    padding: 0 2rem;
+                    border-radius: var(--border-radius);
+                    background-color: white;     
+                }
+
+                // poster + légende
+                &>figure {
+
+                    figcaption {
+                        display: flex;
+                        width: 100%;
+                        justify-content: space-between;
+                    }
+                }
+    
+                // bouton REGARDER
+                &>a {
+                    color: white;
+                    padding: 0 2rem;
+    
+                    background-color: rgb(var(--color-accent-dark));
+                    border-radius: var(--border-radius);
+                }
+            }
+
+            // Partie de droite (résumé)
+            &>div:last-child {
+                
+                hr {
+                    border: 1px solid black;
+                    margin: 0 100px;
+                }
+
+                &>div{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                // mentions utiles, à gauche
+                &>div>div {
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                }
+
+            }          
         }
     }
 }
