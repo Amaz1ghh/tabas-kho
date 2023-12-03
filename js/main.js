@@ -40,6 +40,12 @@ class App {
     gsap.set(slideUpItems, {
       opacity: 0,
     })
+
+    const smoothAppearElements = document.querySelectorAll("[data-smooth-appear]")
+    gsap.set(smoothAppearElements, {
+      opacity: 0,
+      y: 10,
+    })
   }
 
   initLenis() {
@@ -131,14 +137,14 @@ class App {
     const tl = gsap.timeline()
     splitLetter({selector: '.header-title'})
 
-    tl.from(".header-title span", {
-        y: 20,
-        opacity: 0,
+    tl.from(".header-title > span", {
+        y: 0,
+        opacity: 1,
         stagger: {
           amount: .5,
         },
         ease: "power4.inOut",
-        delay: 9,
+        delay: 1,
       })
       .from(".header-info > *", {
         x: 10,
@@ -181,14 +187,14 @@ class App {
       gsap.from(card, {
         scrollTrigger: {
           trigger: card,
-          start: "top bottom-=80px",
-          toggleActions: "restart pause reverse pause",
+          start: "top-=60px bottom-=80px",
+          toggleActions: "restart pause pause reset",
           markers: true,
         },
         opacity: 0,
-        y: 20,
+        y: 40,
         scale: .8,
-        duration: .5,
+        duration: .8,
         ease: "power4.inOut",
       })
     })
@@ -205,7 +211,7 @@ class App {
         scrollTrigger: {
           trigger: item,
           start: "top bottom-=80px",
-          toggleActions: "restart pause restart reset",
+          toggleActions: "restart pause pause reset",
           markers: true
         },
         duration: 0.1,
@@ -219,12 +225,26 @@ class App {
         scrollTrigger: {
           trigger: item,
           start: "top bottom-=80px",
-          toggleActions: "restart pause restart reset",
+          toggleActions: "restart pause pause reset",
           markers: true
         },
         opacity: 1,
         duration: .5,
         ease: "power4.inOut",
+      })
+    })
+
+    const smoothAppearElements = document.querySelectorAll("[data-smooth-appear]")
+    smoothAppearElements.forEach(element => {
+      gsap.to(smoothAppearElements, {
+        scrollTrigger: {
+          trigger: element,
+          start: "top bottom-=80px",
+          toggleActions: "restart pause pause reset",
+          markers: true
+        },
+        opacity: 1,
+        y: 0
       })
     })
   }
