@@ -1,5 +1,29 @@
 
 
+#actors {
+
+  & > div:last-child {
+    padding: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+
+    p {
+      font-size: var(--typescale-lead);
+    }
+  }
+}
+
+
+#price {
+
+  .price-wrapper {
+
+  }
+}
+
 .actors-grid {
   margin-top: 4rem;
   padding: 0 20%;
