@@ -1,7 +1,7 @@
 // Load fonts and variables
 @import "abstracts/variables";
-@import "fonts/switzer";
-@import "fonts/archivo";
+@import "./fonts/switzer.css";
+@import "./fonts/archivo.css";
 
 // Main styles
 body {
@@ -21,10 +21,7 @@ a {
 }
 
 // Imports
-@import "base/reset";
-@import "base/typescale";
-@import "base/effects";
-@import "base/animations";
+@import "base/reset.css";
 @import "components/button";
 @import "components/actor-card";
 @import "layout/navbar";
@@ -35,4 +32,5 @@ a {
 
 // Pages imports
 @import "pages/general-presentation-page";
-@import "pages/presentation_toutes_les_saisons";
+@import "pages/presentation_toutes_les_saisons.css";
+@import "pages/style_backstage.scss";
