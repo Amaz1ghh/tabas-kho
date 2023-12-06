@@ -1,0 +1,27 @@
+#body_backstage{
+    header{
+        & > div{
+            display: flex;
+            direction: row;
+            & > div{
+                align-items: center;
+                margin-left: 5em;
+                & > h2{
+                    font-size: 4em;
+                    text-align: center;
+                    margin-bottom: 1px;
+                    color: #CE91FA;
+                }
+
+                & > hr{
+                    color: #1F1F1F;
+                    height: 2px;
+                }
+            }
+        }
+
+        hr{
+            color: #F67A60;
+        }
+    }
+}
