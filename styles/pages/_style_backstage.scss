@@ -25,6 +25,23 @@
         }
     }
 
+    main{
+        & > hr{
+            color: #F67A60;
+            margin: 0px 150px;
+        }
+
+        article{
+            margin: 50px 120px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+        h2{
+            font-size: var(--typescale-h2);
+        }
+    }
+
     .articleClair{
         background-color: #CE91FA;
         color: #1F1F1F;
