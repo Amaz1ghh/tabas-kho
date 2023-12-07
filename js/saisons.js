@@ -33,9 +33,9 @@ cadres.forEach(cadre => {
 
       // couleur plus foncée sur le bouton cliqué
       allButtons.forEach(btn => {
-        btn.style.backgroundColor = 'rgb(var(--color-accent-light))'
+        btn.classList.remove('active')
       })
-      btn.style.backgroundColor = 'rgb(var(--color-accent-dark))'
+      btn.classList.add('active')
 
       // texte correspondant affiché
       allTexts.forEach(txt => {
