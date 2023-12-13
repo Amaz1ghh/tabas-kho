@@ -1,0 +1,16 @@
+
+
+.critique-slider {
+  width: 300px;
+  height: 300px;
+  padding: 2rem 4rem;
+  background: rgba(var(--color-secondary-light), .4);
+  border-radius: var(--border-radius);
+
+  .slide-container {
+
+    & > div {
+
+    }
+  }
+}
