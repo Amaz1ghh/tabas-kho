@@ -1,5 +1,21 @@
 
 
+#actors {
+
+  & > div:last-child {
+    padding: 10rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+
+    p {
+      font-size: var(--typescale-lead);
+    }
+  }
+}
+
 .actors-grid {
   margin-top: 4rem;
   padding: 0 20%;
@@ -18,3 +34,59 @@
   }
 }
 
+.price-wrapper {
+  height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, 100%);
+
+  & > div {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-direction: column;
+    gap: 2rem;
+
+    & > div {
+      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+
+      h3 {
+        font-size: var(--typescale-h2);
+        font-weight: 900;
+        font-family: var(--font-heading);
+        letter-spacing: -1px;
+        line-height: 100%;
+      }
+    }
+
+    span {
+      width: 2px;
+      height: 100px;
+      bottom: 0;
+      display: block;
+
+      background: rgb(var(--color-secondary));
+    }
+
+    &:nth-child(1) span {
+      height: 40vh;
+    }
+    &:nth-child(2) span {
+      height: 30vh;
+    }
+    &:nth-child(3) span {
+      height: 20vh;
+    }
+    &:nth-child(4) span {
+      height: 5vh;
+    }
+  }
+}

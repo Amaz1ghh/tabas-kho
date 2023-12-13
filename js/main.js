@@ -14,9 +14,9 @@ class App {
     this.initLenis();
     // this.loadLoaderOverlay();
     this.manageNavbar()
-    this.loadHeader()
     this.manageActorCards()
     this.loadSlideUpItems()
+    this.priceSection();
   }
 
   initializeState() {
@@ -133,42 +133,6 @@ class App {
     })
   }
 
-  loadHeader() {
-    const tl = gsap.timeline()
-    splitLetter({selector: '.header-title'})
-
-    tl.from(".header-title > span", {
-        y: 0,
-        opacity: 1,
-        stagger: {
-          amount: .5,
-        },
-        ease: "power4.inOut",
-        delay: 1,
-      })
-      .from(".header-info > *", {
-        x: 10,
-        opacity: 0,
-        stagger: {
-          amount: .5
-        },
-        ease: "power4.inOut"
-      })
-      .from(".glow", {
-        width: 0,
-        height: 0,
-        opacity: 0,
-        ease: "power4.inOut",
-        duration: 2
-      }, "-=1")
-      .from(".background", {
-        opacity: 0,
-        filter: "grayscale(100%)",
-        duration: 1,
-        ease: "none"
-      }, "-=1.4")
-  }
-
   manageActorCards() {
     const cards = document.querySelectorAll(".actor-card")
 
@@ -246,6 +210,22 @@ class App {
         opacity: 1,
         y: 0
       })
+    })
+  }
+
+  priceSection() {
+    const prices = gsap.utils.toArray(".price-wrapper > div")
+
+    gsap.to(prices, {
+      xPercent: -100 * (prices.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".price-wrapper",
+        pin: true,
+        scrub: .5,
+        snap: 1 / (prices.length - 1),
+        end: () => "+=" + document.querySelector(".price-wrapper").offsetWidth
+      }
     })
   }
 }
