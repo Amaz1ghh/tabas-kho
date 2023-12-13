@@ -9,45 +9,95 @@
                 & > h2{
                     font-size: 4em;
                     text-align: center;
-                    margin-bottom: 1px;
                     color: #CE91FA;
                 }
 
                 & > hr{
                     color: #1F1F1F;
-                    height: 2px;
                 }
             }
         }
-
-        hr{
+        & + hr{
             color: #F67A60;
+            margin: 0px 50px;
         }
     }
 
     main{
+
+        padding: 0 6rem;
+
+        & > div{
+            display: flex;
+            direction: row;
+            justify-content: space-between;
+            & > article{
+                padding: 1.5rem;
+                margin: 3rem 1.5rem;
+            }
+        }
+
         & > hr{
             color: #F67A60;
-            margin: 0px 150px;
+            margin: 0px 9rem;
         }
 
         article{
-            margin: 50px 120px;
-            padding: 10px;
+            margin: 3rem 1.5rem;
+            padding: 1rem;
             border-radius: 10px;
+            
+            p{
+                margin-left: 1.5rem;
+            }
         }
 
         h2{
             font-size: var(--typescale-h2);
         }
+
+        h5{
+            font-size: 1.4rem;
+            line-height: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+    }
+
+    .datePublication{
+        float: right;
+        margin-right: 1rem;
     }
 
     .articleClair{
         background-color: #CE91FA;
         color: #1F1F1F;
+        & > hr{
+            color: #8D46C2;
+            margin: 0 100px 10px 0;
+        }
+
+        summary{
+            background-color: #8D46C2;
+            padding: 0.4rem 0 0 12rem;
+            border-radius: 10px;
+            width: 25rem;
+            height: 2.5rem;
+        }
     }
     .articleSombre{
         background-color: #8D46C2;
         color: #1F1F1F;
+        & > hr{
+            color: #CE91FA;
+            margin: 0 100px 10px 0;
+        }
+
+        summary{
+            background-color: #CE91FA;
+            padding: 0.4rem 0 0 12rem;
+            border-radius: 10px;
+            width: 25rem;
+            height: 2.5rem;
+        }
     }
 }
