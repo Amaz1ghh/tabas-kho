@@ -1,5 +1,10 @@
 #body_presentation_saisons {
 
+    @keyframes pulse{
+        50%  {transform: scale(1.2);}
+    }
+
+    // FORMAT DESKTOP
     &>main {
         padding: 0 var(--padding-desktop-horizontal);
 
@@ -71,7 +76,7 @@
                 // bouton REGARDER
                 &>a {
                     color: white;
-                    padding: 0 2rem;
+                    padding: 0 1rem;
 
                     transition: 0.5s;
     
@@ -79,8 +84,10 @@
                     border-radius: var(--border-radius);
 
                     &:hover {
-                        background-color: rgb(var(--color-primary-dark));
+                        left: 300px;
+                        box-shadow: inset 10rem 0 0 0 rgb(var(--color-primary-dark));
                     }
+
                 }
             }
 
@@ -105,8 +112,6 @@
                     // texte
                     p {
                         display: none;
-
-                        transition: 1s;
                     }
 
                     p.active {
@@ -144,4 +149,23 @@
             }      
         }
     }
+
+    // FORMAT RESPONSIVE TELEPHONE
+    @media screen and (max-width: 428px) {
+        
+        main {
+            
+            &>article {
+                background-color: red;
+                visibility: hidden;
+            }
+
+
+        }
+
+
+    }
+
+
+
 }
