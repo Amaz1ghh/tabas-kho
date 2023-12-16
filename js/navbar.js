@@ -1,7 +1,3 @@
-// IMPORTS
-import anime from "animejs";
-
-// FONCTIONNEMENT
 const hamburgerMenu = document.querySelector('.hamburger-menu')
 const navButtons = document.querySelector('.navbar ul')
 

@@ -4,7 +4,7 @@
     &>main {
         padding: 0 var(--padding-desktop-horizontal);
 
-        h1 {
+        h3 {
             font-size: var(--typescale-h3);
             font-weight: 700;
         }
@@ -17,12 +17,17 @@
             background-color: rgb(var(--color-primary));
         }
 
+        // lignes de séparation
+        &>svg {
+            width: 70vw;
+        }
+
         // Style global des cadres de présentation des saisons
         &>article {
             color: black;
 
             padding: 1rem;
-            margin: 2.5rem 0;
+            margin: 1rem 0;
 
             display: flex;
             gap: 2rem;
@@ -147,14 +152,9 @@
     }
 
     // FORMAT RESPONSIVE TELEPHONE
-    @media screen and (max-width: 428px) {
+    // @media screen and (max-width: 428px) {
         
-        main {
-            
-            &>article {
-                background-color: red;
-                visibility: hidden;
-            }
-        }
-    }
+    //     main {
+    //     }
+    // }
 }
