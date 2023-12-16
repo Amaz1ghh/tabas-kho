@@ -76,11 +76,51 @@
   @media screen and (max-width: 728px) {
     .hamburger-menu {
       cursor: pointer;
-      display: block;
+      display: flex;
+      flex-direction: column;
+
+      // menu hamburger cliqué
+      &.active {
+
+        svg {
+          transition: 1s;
+        }
+
+        svg:first-child {
+          transform: rotate(45deg) translateX(3px) translateY(11px)
+        }
+
+        svg:last-child  {
+          transform: rotate(-45deg)
+        }
+
+      }
     }
 
     ul {
-      display: none;
+      position: absolute;
+      bottom: 0;
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+
+      width: 100vw;
+
+      justify-content: flex-end;
+      left: 0;
+
+      a {
+        width: 100vw;
+      }
+
+      a::after {
+        content: none;
+      }
+
+      &.active {
+        transform: translateY(100%);
+      }
     }
     
   }
