@@ -1,16 +1,44 @@
 
 
 .critique-slider {
-  width: 300px;
-  height: 300px;
-  padding: 2rem 4rem;
   background: rgba(var(--color-secondary-light), .4);
   border-radius: var(--border-radius);
 
-  .slide-container {
+  .slide-wapper {
+
+    
+  }
+
+  .swiper-slide {
+    box-sizing: border-box;
+    padding: 2rem 6rem;
+    display: block;
+    overflow: hidden;
+
+    p {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
 
     & > div {
-
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
+}
+
+// .swiper-button-next,
+// .swiper-button-prev {
+//   display: flex;
+//   justify-content: center;
+// }
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  content: "" !important;
+}
+
+.swiper-button-next {
+  transform: rotate(180deg);
 }
