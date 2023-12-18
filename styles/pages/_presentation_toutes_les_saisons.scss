@@ -25,11 +25,14 @@
         // Style global des cadres de présentation des saisons
         &>article {
             color: black;
+            font-weight: 500;
 
             padding: 1rem;
             margin: 1rem 0;
 
             display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 2rem;
 
             border-radius: var(--border-radius);
@@ -58,7 +61,6 @@
 
                 // N° saison
                 &>p:first-child {
-
                     padding: 0 2rem;
                     border-radius: var(--border-radius);
                     background-color: white;     
@@ -77,16 +79,16 @@
                 // bouton REGARDER
                 &>a {
                     color: white;
-                    padding: 0 1rem;
+                    padding: 0 4rem;
 
-                    transition: 0.5s;
+                    transition: 0.8s;
     
                     background-color: rgb(var(--color-accent-dark));
                     border-radius: var(--border-radius);
 
                     &:hover {
                         left: 300px;
-                        box-shadow: inset 10rem 0 0 0 rgb(var(--color-primary-dark));
+                        box-shadow: inset 20rem 0 0 0 rgb(var(--color-primary-dark));
                     }
 
                 }
@@ -141,6 +143,7 @@
                     button:hover {
                         cursor: pointer;
                         transform: rotate(8deg);
+                        border: 1px black solid;
                     }
 
                     button.active {
@@ -152,9 +155,109 @@
     }
 
     // FORMAT RESPONSIVE TELEPHONE
-    // @media screen and (max-width: 428px) {
+    @media screen and (max-width: 728px) {
         
-    //     main {
-    //     }
-    // }
+        main {
+            
+            // styles des cadres de présentation
+            // Style global des cadres de présentation des saisons
+            &>article {
+                width: 60%;
+                display: flex;
+                gap: 2rem;
+
+                padding: 1rem;
+                margin: 1rem 0;
+
+                // Deux parties
+                &>div {
+                    gap: 0.6rem;
+                }
+
+                // Partie de gauche
+                &>div:first-child {
+                    justify-content: center;
+
+                    &>p:first-child {
+                        font-weight: 400;
+                    }
+
+                    // poster + légende
+                    &>figure {
+
+                        figcaption {
+                            display: none;
+                        }
+                    }
+        
+                    // bouton REGARDER
+                    &>a {
+                        padding: 0 2rem;
+                        transition: 0.8s;
+        
+                        background-color: rgb(var(--color-accent-dark));
+                        border-radius: var(--border-radius);
+
+                        &:hover {
+                            left: 300px;
+                            box-shadow: inset 10rem 0 0 0 rgb(var(--color-primary-dark));
+                        }
+
+                    }
+                }
+
+                // Partie de droite (résumé)
+                &>div:last-child {
+
+                    flex-grow: 1;
+                    
+                    .text-zone{
+
+                        display: none;
+
+                        hr {
+                            border: 1px solid black;
+                            width: 80%;
+                        }
+
+                        // texte
+                        p {
+                        }
+
+                        p.active {
+                        }
+                    }
+
+                    // Mentions en bas
+                    &>div{
+                    }
+
+                    // mentions en bas, à gauche
+                    &>div>div {
+                        flex-direction: column;
+                        justify-content: center;
+
+                        &>svg:first-child {
+                            display: none;
+                        }
+
+                        p {
+                            display: none;
+                        }
+
+                        button {
+                            width: 35px;
+                            height: 35px;
+                        }
+                        
+                        button:hover {
+                        }
+
+                        button.active {
+                        }
+                    }
+                }      
+            }
+        }
+    }
 }
