@@ -4,6 +4,19 @@
 @import "./fonts/archivo";
 
 // Main styles
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(var(--color-secondary), 1);
+  border-radius: 10px;
+}
+
 body {
   width: 100vw;
   background: rgb(var(--color-background));
@@ -20,6 +33,13 @@ a {
   color: inherit;
 }
 
+button {
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+}
+
 // Imports
 @import "base/reset";
 @import "base/animations";
@@ -27,6 +47,7 @@ a {
 @import "base/typescale";
 @import "components/button";
 @import "components/actor-card";
+@import "components/critique-slider";
 @import "layout/navbar";
 @import "layout/header";
 @import "layout/sections";

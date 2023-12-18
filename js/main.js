@@ -1,62 +1,30 @@
 import {splitLetter} from "./utils.js";
 import gsap from "gsap";
 import {ScrollTrigger} from "gsap/ScrollTrigger";
-import Lenis from "@studio-freight/lenis";
-import anime from "animejs";
 import seriesData from "../data/series.json";
+import {SlideUp} from "./slideUp.js";
+import {LenisSmoothScroll} from "./smooth-scroll.js";
+import Swiper from "swiper";
+import {Navigation} from "swiper/modules"
+import 'swiper/css/bundle';
+import 'swiper/css/navigation';
 
 gsap.registerPlugin(ScrollTrigger)
 
 class App {
-
   constructor() {
     this.initializeState()
-    this.initLenis();
     // this.loadLoaderOverlay();
-    this.manageNavbar()
     this.manageActorCards()
-    this.loadSlideUpItems()
     this.priceSection();
   }
 
   initializeState() {
-    const slideUpItems = document.querySelectorAll("[data-slide-up]")
-
-    slideUpItems.forEach(item => {
-      if (item.querySelectorAll('div, span').length > 0) {
-        splitLetter({el: item, lines: true})
-      } else {
-        splitLetter({el: item})
-      }
-      const letters = item.querySelectorAll("[data-letter]")
-
-      letters.forEach(letter => {
-        gsap.set(letters, {
-          y: 10,
-          opacity: 0,
-        })
-      })
-    })
-    gsap.set(slideUpItems, {
-      opacity: 0,
-    })
-
-    const smoothAppearElements = document.querySelectorAll("[data-smooth-appear]")
-    gsap.set(smoothAppearElements, {
-      opacity: 0,
-      y: 10,
-    })
-  }
-
-  initLenis() {
-    const lenis = new Lenis()
-
-    function raf(time) {
-      lenis.raf(time)
-      requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
+    // const smoothAppearElements = document.querySelectorAll("[data-smooth-appear]")
+    // gsap.set(smoothAppearElements, {
+    //   opacity: 0,
+    //   y: 10,
+    // })
   }
 
   loadLoaderOverlay() {
@@ -74,6 +42,7 @@ class App {
     })
 
     window.addEventListener("load", e => {
+      e.preventDefault()
       const tl = gsap.timeline()
       let i = 0;
       const p = seriesContainer.querySelectorAll("p");
@@ -116,21 +85,6 @@ class App {
           delay: .5,
         })
     })
-
-  }
-
-  manageNavbar() {
-    gsap.to('.navbar', {
-      scrollTrigger: {
-        trigger: ".navbar",
-        start: "10px top",
-        toggleActions: "restart pause reverse pause",
-        scrub: true,
-      },
-      background: "rgba(var(--color-background), .8)",
-      backdropFilter: "blur(10px)",
-      borderBottom: "1px solid rgb(var(--color-secondary))"
-    })
   }
 
   manageActorCards() {
@@ -165,64 +119,17 @@ class App {
 
   }
 
-  loadSlideUpItems() {
-    const slideUpItems = document.querySelectorAll("[data-slide-up]")
-
-    slideUpItems.forEach(item => {
-      const letters = item.querySelectorAll("[data-letter]")
-
-      gsap.to(letters, {
-        scrollTrigger: {
-          trigger: item,
-          start: "top bottom-=80px",
-          toggleActions: "restart pause pause reset",
-          markers: true
-        },
-        duration: 0.1,
-        opacity: 1,
-        y: 0,
-        ease: "inOut",
-        stagger: .75 / (letters.length + 1),
-      }, "+=0")
-
-      gsap.to(item, {
-        scrollTrigger: {
-          trigger: item,
-          start: "top bottom-=80px",
-          toggleActions: "restart pause pause reset",
-          markers: true
-        },
-        opacity: 1,
-        duration: .5,
-        ease: "power4.inOut",
-      })
-    })
-
-    const smoothAppearElements = document.querySelectorAll("[data-smooth-appear]")
-    smoothAppearElements.forEach(element => {
-      gsap.to(smoothAppearElements, {
-        scrollTrigger: {
-          trigger: element,
-          start: "top bottom-=80px",
-          toggleActions: "restart pause pause reset",
-          markers: true
-        },
-        opacity: 1,
-        y: 0
-      })
-    })
-  }
-
   priceSection() {
     const prices = gsap.utils.toArray(".price-wrapper > div")
 
+    // horizontal scroll
     gsap.to(prices, {
       xPercent: -100 * (prices.length - 1),
       ease: "none",
       scrollTrigger: {
         trigger: ".price-wrapper",
         pin: true,
-        scrub: .5,
+        scrub: .2,
         snap: 1 / (prices.length - 1),
         end: () => "+=" + document.querySelector(".price-wrapper").offsetWidth
       }
@@ -231,8 +138,34 @@ class App {
 }
 
 
+new LenisSmoothScroll();
 new App();
+new SlideUp();
 
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'horizontal',
+  loop: true,
+  autoHeight: true,
+  autoplay: true,
+  modules: [Navigation],
+
+  effect: "fade",
+  fadeEffect: {
+    crossFade: true
+  },
+
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true,
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
 
 if ("paintWorklet" in CSS) {
   CSS.paintWorklet.addModule(
