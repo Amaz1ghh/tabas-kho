@@ -1,6 +1,8 @@
 
 // Variables
 :root {
+
+  // FORMAT DESKTOP
   --color-text: 255, 255, 255;
   --color-background: 15, 15, 15;
   --color-accent-light: 247, 154, 135;
@@ -23,4 +25,11 @@
 
   --padding-desktop-horizontal: 10rem;
   --padding-phone-horizontal: 1.25rem;
+
+  // FORMAT RESPONSIVE
+  @media screen and (max-width: 728px) {
+    --padding-desktop-horizontal: 1.25rem;
+    --typescale-h3: 1.75rem;
+  }
 }
+

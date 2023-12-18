@@ -12,7 +12,7 @@
 
   <body id="body_presentation_saisons">
     <nav class="navbar">
-      <a href="../">
+      <a href="/">
         <svg
           id="logo"
           width="30"
@@ -54,9 +54,19 @@
 
       <ul>
         <li><a href="/pages/saisons.html" class="active">Saisons</a></li>
-        <li><a href="#">Critiques</a></li>
-        <li><a href="#">Backstage</a></li>
+        <li><a href="/pages/critiques.html">Critiques</a></li>
+        <li><a href="/pages/backstage.html">Backstage</a></li>
       </ul>
+      
+      <a class="hamburger-menu">
+        <svg width="22" height="10" viewBox="0 0 22 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1H21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <svg width="22" height="10" viewBox="0 0 22 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1H21" stroke="white" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </a>
+
     </nav>
 
     <header class="header">
@@ -89,7 +99,7 @@
     </header>
 
     <main>
-      <h1>Toutes les saisons</h1>
+      <h3 data-slide-up>Toutes les saisons</h3>
 
       <article class="cadre_presentation_saison">
 
@@ -182,18 +192,14 @@
               </clipPath>
               </defs>
             </svg>
-
           </div>
-            
-
         </div>
       </article>
 
       <!-- Ligne de séparation -->
-      <svg width="773" height="30" viewBox="0 0 773 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg width="773" height="30"  xmlns="http://www.w3.org/2000/svg">
         <path d="M0.566243 15L15 29.4338L29.4338 15L15 0.566243L0.566243 15ZM769.717 17.5C771.097 17.5 772.217 16.3807 772.217 15C772.217 13.6193 771.097 12.5 769.717 12.5V17.5ZM15 17.5H769.717V12.5H15V17.5Z" fill="#F67A60"/>
       </svg>
-      <!-- ------------------- -->
 
     </main>
 
@@ -202,6 +208,8 @@
         <!-- liens pratiques -->
         <div>
           <div>
+
+            <a href="/">
             <svg
               width="30"
               height="27"
@@ -236,13 +244,14 @@
                 fill="#C58AEE"
               />
             </svg>
+            </a>
 
             <p>Tabas'<strong>KHO</strong></p>
           </div>
 
           <article>
             <p class="text-lead">Liens utiles</p>
-            <a>Séries phare</a>
+            <a>Séries phares</a>
             <a>Critiques récentes</a>
             <a>Toutes les séries</a>
           </article>
@@ -258,7 +267,8 @@
         <!-- Div des réseaux sociaux -->
         <div>
 
-          <a>
+          <!-- twitter -->
+          <a href="https://twitter.com/" target="_blank">
             <svg
               width="20"
               height="18"
@@ -281,7 +291,8 @@
             </svg>
           </a>
 
-          <a>
+          <!-- insta -->
+          <a href="https://www.instagram.com/" target="_blank">
             <svg
               width="20"
               height="20"
@@ -296,7 +307,8 @@
             </svg>
           </a>
 
-          <a>
+          <!-- snapchat -->
+          <a href="https://accounts.snapchat.com/" target="_blank">
             <svg
               width="20"
               height="20"
@@ -319,6 +331,7 @@
     </footer>
 
     <script type="module" src="../js/saisons.js"></script>
-    <script type="module" src="../main.js"></script>
+    <!-- <script type="module" src="../js/main.js"></script> -->
+    <script type="module" src="../js/navbar.js"></script>
   </body>
 </html>

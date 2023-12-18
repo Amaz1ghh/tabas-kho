@@ -1,5 +1,6 @@
-
 .navbar {
+
+  // FORMAT DESKTOP
   width: 100vw;
   padding: 1rem var(--padding-desktop-horizontal);
   position: fixed;
@@ -25,6 +26,10 @@
       font-family: rgb(var(--font-heading));
       font-weight:  700;
     }
+  }
+
+  .hamburger-menu {
+    display: none;
   }
 
   ul {
@@ -63,6 +68,57 @@
         &::after {
           width: 40%;
         }
+      }
+    }
+  }
+
+  // FORMAT RESPONSIVE
+  @media screen and (max-width: 728px) {
+    
+    // croix
+    .hamburger-menu {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+
+      // menu hamburger cliqué
+      &.active {
+        svg {
+          transition: 1s;
+        }
+        svg:first-child {
+          transform: rotate(45deg) translateX(3px) translateY(11px)
+        }
+        svg:last-child  {
+          transform: rotate(-45deg)
+        }
+      }
+    }
+
+    // liste en deça de la croix
+    ul {
+      position: absolute;
+      bottom: 0;
+      width: 100vw;
+      left: 0;
+
+      visibility: hidden;
+      background-color: black;
+
+      z-index: -1;
+      transition: 1s;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      a::after {
+        content: none;
+      }
+
+      &.active {
+        visibility: visible;
+        transform: translateY(100%);
       }
     }
   }
