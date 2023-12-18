@@ -5,6 +5,9 @@ import seriesData from "../data/series.json";
 import {SlideUp} from "./slideUp.js";
 import {LenisSmoothScroll} from "./smooth-scroll.js";
 import Swiper from "swiper";
+import {Navigation} from "swiper/modules"
+import 'swiper/css/bundle';
+import 'swiper/css/navigation';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -12,7 +15,6 @@ class App {
   constructor() {
     this.initializeState()
     // this.loadLoaderOverlay();
-    this.manageNavbar()
     this.manageActorCards()
     this.priceSection();
   }
@@ -83,21 +85,6 @@ class App {
           delay: .5,
         })
     })
-
-  }
-
-  manageNavbar() {
-    gsap.to('.navbar', {
-      scrollTrigger: {
-        trigger: ".navbar",
-        start: "10px top",
-        toggleActions: "restart pause reverse pause",
-        scrub: true,
-      },
-      background: "rgba(var(--color-background), .8)",
-      backdropFilter: "blur(10px)",
-      borderBottom: "1px solid rgb(var(--color-secondary))"
-    })
   }
 
   manageActorCards() {
@@ -142,7 +129,7 @@ class App {
       scrollTrigger: {
         trigger: ".price-wrapper",
         pin: true,
-        scrub: .5,
+        scrub: .2,
         snap: 1 / (prices.length - 1),
         end: () => "+=" + document.querySelector(".price-wrapper").offsetWidth
       }
@@ -157,23 +144,26 @@ new SlideUp();
 
 const swiper = new Swiper('.swiper', {
   // Optional parameters
-  direction: 'vertical',
+  direction: 'horizontal',
   loop: true,
+  autoHeight: true,
+  autoplay: true,
+  modules: [Navigation],
 
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
+  effect: "fade",
+  fadeEffect: {
+    crossFade: true
+  },
+
+  scrollbar: {
+    el: '.swiper-scrollbar',
+    draggable: true,
   },
 
   // Navigation arrows
   navigation: {
     nextEl: '.swiper-button-next',
     prevEl: '.swiper-button-prev',
-  },
-
-  // And if we need scrollbar
-  scrollbar: {
-    el: '.swiper-scrollbar',
   },
 });
 
