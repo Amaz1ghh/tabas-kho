@@ -2,6 +2,7 @@
 
     // FORMAT DESKTOP
     &>main {
+
         padding: 0 var(--padding-desktop-horizontal);
 
         h3 {
@@ -18,7 +19,7 @@
         }
 
         // lignes de séparation
-        &>svg {
+        &>article+svg {
             width: 70vw;
         }
 
@@ -37,6 +38,14 @@
 
             border-radius: var(--border-radius);
 
+            // pour le responsive plus tard
+            &>span {
+                display: none;
+            }
+            &>svg:last-child {
+                display: none;
+            }
+
             // Deux parties
             &>div {
                 display: flex;
@@ -51,7 +60,6 @@
 
             // Partie de gauche
             &>div:first-child {
-
                 flex-basis: 20%;
                 flex-shrink: 0;
                 flex-grow: 0;
@@ -95,16 +103,15 @@
             }
 
             // Partie de droite (résumé)
-            &>div:last-child {
-
+            &>div:nth-child(3) {
+                align-self: stretch;
                 flex-grow: 1;
                 
                 .text-zone{
-
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    flex-grow: 1;
+                    flex-grow: 2;
                     gap: 0.5rem;
 
                     hr {
@@ -154,7 +161,9 @@
         }
     }
 
-    // FORMAT RESPONSIVE TELEPHONE
+    // ###############################
+    // # FORMAT RESPONSIVE TELEPHONE #
+    // ###############################
     @media screen and (max-width: 728px) {
         
         main {
@@ -162,23 +171,43 @@
             // styles des cadres de présentation
             // Style global des cadres de présentation des saisons
             &>article {
-                width: 60%;
-                display: flex;
-                gap: 2rem;
+                width: 65%; // plus petit pour le responsive
+                justify-content: space-between;
+                gap: .5rem;
 
-                padding: 1rem;
+                padding: .5rem;
                 margin: 1rem 0;
 
-                // Deux parties
+                // afficher les lignes verticales et les étoiles à droite
+                &>span {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+
+                    display: block;
+                    height: 90px;
+                    width: 1px;
+                    background-color: black;
+                }
+                &>span::before {
+                    content:"";
+                    width: 6px;
+                    height: 6px;
+                    background-color: red;
+                }
+
+                // Deux parties principales de description dans le cadre (poster + boutons)
                 &>div {
                     gap: 0.6rem;
                 }
 
                 // Partie de gauche
                 &>div:first-child {
-                    justify-content: center;
-
+                    // N° saison
                     &>p:first-child {
+                        padding: 0 .5rem;
+                        border-radius: var(--border-radius);
+                        background-color: white;
+                        
                         font-weight: 400;
                     }
 
@@ -186,13 +215,14 @@
                     &>figure {
 
                         figcaption {
-                            display: none;
+                            display: block;
+                            font-size: var(--typescale-small-text);
                         }
                     }
         
                     // bouton REGARDER
                     &>a {
-                        padding: 0 2rem;
+                        padding: 0 .5rem;
                         transition: 0.8s;
         
                         background-color: rgb(var(--color-accent-dark));
@@ -202,13 +232,12 @@
                             left: 300px;
                             box-shadow: inset 10rem 0 0 0 rgb(var(--color-primary-dark));
                         }
-
                     }
                 }
 
                 // Partie de droite (résumé)
-                &>div:last-child {
-
+                &>div:nth-child(3) {
+                    align-self: center;
                     flex-grow: 1;
                     
                     .text-zone{
@@ -222,41 +251,56 @@
 
                         // texte
                         p {
+                            display: none;
                         }
 
                         p.active {
+                            display: block;
                         }
                     }
 
                     // Mentions en bas
                     &>div{
-                    }
-
-                    // mentions en bas, à gauche
-                    &>div>div {
-                        flex-direction: column;
                         justify-content: center;
 
-                        &>svg:first-child {
+                        // mentions en bas, à gauche
+                        &>div {
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+    
+                            &>svg:first-child {
+                                display: none;
+                            }
+    
+                            p {
+                                display: none;
+                            }
+    
+                            button {
+                                width: 35px;
+                                height: 35px;
+                            }
+                            
+                            button:hover {
+                            }
+    
+                            button.active {
+                            }
+                        }
+
+                        // étoiles, en bas à droite
+                        &>svg {
                             display: none;
                         }
+                    }    
+                }
 
-                        p {
-                            display: none;
-                        }
-
-                        button {
-                            width: 35px;
-                            height: 35px;
-                        }
-                        
-                        button:hover {
-                        }
-
-                        button.active {
-                        }
-                    }
-                }      
+                // étoiles totalement à droite pour le responsive
+                &>svg:last-child {
+                    flex-grow: 0;
+                    display: block;
+                }
             }
         }
     }
