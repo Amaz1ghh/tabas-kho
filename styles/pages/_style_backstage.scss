@@ -1,7 +1,9 @@
 #body_backstage{
+    /**HEADER*/
     header{
         height: 100vh;
 
+        /**positionnement de l'entête (logo + titre du film et de la page)*/
         & > div{
             display: flex;
             direction: row;
@@ -19,23 +21,27 @@
                 }
             }
         }
+
         & + hr{
             color: #F67A60;
             margin: 0px 50px;
         }
     }
 
+    /**MAIN*/
     main{
+        padding: 0 8rem;
 
-        padding: 0 11rem;
-
+        /**paramètres des 2 articles côte à côte*/
         & > div{
             display: flex;
             direction: row;
             justify-content: space-between;
+            width: 83vw;
+            margin: 0 1.5rem;
             & > article{
                 padding: 1.5rem;
-                margin: 3rem 1.5rem;
+                margin: 3rem 3rem 3rem 0;
             }
         }
 
@@ -44,6 +50,7 @@
             margin: 0 9rem;
         }
 
+        /**paramètres de tout les articles*/
         article{
             margin: 3rem 1.5rem;
             padding: 1rem;
@@ -72,12 +79,15 @@
         }
     }
 
+    /**CLASSES*/
+    /**pour chaque balise <p> contenant la date de publication - positionnement de la date en haut à droite de chaque article*/
     .datePublication{
         float: right;
         margin-right: 1rem;
     }
 
-    .articleClair{
+    /**paramètres de chaque article clair*/
+    .articleClair{  
         background-color: #CE91FA;
         color: #1F1F1F;
         & > hr{
@@ -95,8 +105,11 @@
 
         img{
             float: left;
+            height: 56vh;
         }
     }
+
+    /**paramètres de chaque article sombre*/
     .articleSombre{
         background-color: #8D46C2;
         color: #1F1F1F;
@@ -116,6 +129,23 @@
 
         img{
             float: right;
+            width: 12rem;
+            height: 12rem;
         }
     }
+
+    /**positionnement de l'image d'un article spécifique à gauche*/
+    .img_gauche{
+        img{
+            float: left;
+        }
+    }
+}
+
+/**RESPONSIVE*/
+@media screen and (max-width: 428px) {
+    img{
+        display: none;
+    }
+    
 }
