@@ -41,3 +41,8 @@ cadres.forEach(cadre => {
 });
 
 // RESOPNSIVE
+window.addEventListener('resize', (e) => {
+  if(window.innerWidth < 728) {
+    
+  }
+})
