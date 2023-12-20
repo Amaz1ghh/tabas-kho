@@ -121,19 +121,23 @@ class App {
 
   priceSection() {
     const prices = gsap.utils.toArray(".price-wrapper > div")
-
-    // horizontal scroll
-    gsap.to(prices, {
-      xPercent: -100 * (prices.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".price-wrapper",
-        pin: true,
-        scrub: .2,
-        snap: 1 / (prices.length - 1),
-        end: () => "+=" + document.querySelector(".price-wrapper").offsetWidth
+    window.addEventListener("resize", ev => {
+      if (window.innerWidth > 768) {
+        // horizontal scroll
+        gsap.to(prices, {
+          xPercent: -100 * (prices.length - 1),
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".price-wrapper",
+            pin: true,
+            scrub: .2,
+            snap: 1 / (prices.length - 1),
+            end: () => "+=" + document.querySelector(".price-wrapper").offsetWidth
+          }
+        })
       }
-    })
+    }, true)
+
   }
 }
 

@@ -6,7 +6,6 @@
 
   .slide-wapper {
 
-    
   }
 
   .swiper-slide {
@@ -41,4 +40,17 @@
 
 .swiper-button-next {
   transform: rotate(180deg);
+}
+
+@media only screen and (max-width: 768px) {
+  .critique-slider {
+    height: auto;
+    .swiper-slide {
+      padding: 1rem 2rem;
+    }
+  }
+  .swiper-button-prev,
+  .swiper-button-next {
+    display: none !important;
+  }
 }
