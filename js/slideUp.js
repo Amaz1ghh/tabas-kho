@@ -1,5 +1,8 @@
 import gsap from "gsap";
 import {splitLetter} from "./utils.js";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger)
+
 
 export class SlideUp {
   constructor() {

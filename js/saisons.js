@@ -1,8 +1,14 @@
-// CADRES DE PRESENTATION DES SAISON
+// IMPORTS
+import {LenisSmoothScroll} from "./smooth-scroll.js";
+import { SlideUp } from "./slideUp";
+new LenisSmoothScroll();
+new SlideUp();
 
+// CADRES DE PRESENTATION DES SAISON
 // chaque cadre
 const cadres = document.querySelectorAll('.cadre_presentation_saison')
 
+// affichage des textes après avoir cliqué sur les boutons
 cadres.forEach(cadre => {
 
   // get tous les boutons
@@ -34,45 +40,4 @@ cadres.forEach(cadre => {
   })
 });
 
-
-// ANIMATION DE REVEAL POUR LE TEXTE "TOUTES LES SAISONS"
-// gsap.utils.toArray("main>h1").forEach(function (elem) {
-//   ScrollTrigger.create({
-//     trigger: elem,
-//     start: "top 80%",
-//     end: "bottom 20%",
-//     markers: true,
-//     onEnter: function () {
-//       gsap.fromTo(
-//         elem,
-//         { y: 100, autoAlpha: 0 },
-//         {
-//           duration: 0.75,
-//           y: 0,
-//           autoAlpha: 1,
-//           ease: "back",
-//           overwrite: "auto"
-//         }
-//       );
-//     },
-//     onLeave: function () {
-//       gsap.fromTo(elem, { autoAlpha: 1 }, { autoAlpha: 0, overwrite: "auto" });
-//     },
-//     onEnterBack: function () {
-//       gsap.fromTo(
-//         elem,
-//         { y: -100, autoAlpha: 0 },
-//         {
-//           duration: 0.15,
-//           y: 0,
-//           autoAlpha: 1,
-//           ease: "back",
-//           overwrite: "auto"
-//         }
-//       );
-//     },
-//     onLeaveBack: function () {
-//       gsap.fromTo(elem, { autoAlpha: 1 }, { autoAlpha: 0, overwrite: "auto" });
-//     }
-//   });
-// });
+// RESOPNSIVE
