@@ -1,5 +1,5 @@
 
-
+// cta en bas de la section des acteurs
 #actors {
   & > div:last-child {
     padding: 10rem;
@@ -111,6 +111,117 @@
     }
   }
 }
+
+// Page navigation
+aside {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+
+  nav {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+
+    background: rgb(var(--color-secondary-light));
+    border-radius: var(--border-radius);
+
+    span {
+      z-index: 1;
+      bottom: 0;
+      display: block;
+      position: absolute;
+      background: rgb(var(--color-primary));
+      border-radius: var(--border-radius);
+      transition: left .3s ease, width .3s ease, opacity .3s ease;
+    }
+
+    ul {
+      z-index: 2;
+      display: flex;
+      gap: 1rem;
+
+      a {
+        display: block;
+        padding: .5rem 2rem;
+
+        border-radius: var(--border-radius);
+        transition: box-shadow .3s ease;
+
+        &:not(&.active):hover {
+          box-shadow: 0 0 0 2px rgb(var(--color-primary));
+        }
+
+        &.active {
+          color: rgb(var(--color-background));
+        }
+      }
+    }
+  }
+
+  .share-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+
+    button {
+      padding: .5rem 1rem;
+      order: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
+
+      background: rgb(var(--color-secondary-light));
+      border-radius: var(--border-radius);
+      transition: box-shadow .3s ease;
+
+      &:hover {
+        box-shadow: 0 0 0 2px rgb(var(--color-primary));
+      }
+    }
+
+    ul {
+      top: -4rem;
+      position: absolute;
+      display: flex;
+      gap: 0;
+      transform: translateX(-2rem);
+      opacity: 0;
+      transition: gap .2s ease, transform .2s ease, opacity .2s ease;
+
+      &.show {
+        gap: 1rem;
+        transform: translateX(0);
+        opacity: 1;
+      }
+
+      a {
+        width: 2.5rem;
+        height: 2.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(var(--color-secondary));
+        border-radius: 100px;
+
+        &:hover {
+          background: rgb(var(--color-secondary-light));
+        }
+      }
+    }
+  }
+}
+
 
 @media only screen and (max-width: 768px) {
   .price-wrapper {
