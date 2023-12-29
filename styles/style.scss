@@ -21,6 +21,7 @@ body {
   width: 100vw;
   background: rgb(var(--color-background));
   overflow-x: hidden;
+  scroll-behavior: smooth;
 
   color: rgb(var(--color-text));
   font-family: Archivo, Poppins, sans-serif;
