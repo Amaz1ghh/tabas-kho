@@ -150,7 +150,6 @@
                     button:hover {
                         cursor: pointer;
                         transform: rotate(8deg);
-                        border: 1px black solid;
                     }
 
                     button.active {
@@ -168,11 +167,10 @@
         
         main {
             
-            // styles des cadres de présentation
-            // Style global des cadres de présentation des saisons
+            // CADRES DE PRESENTATION DES SAISONS
             &>article {
-                width: 65%; // plus petit pour le responsive
-                justify-content: space-between;
+                width: 55%; // plus petit pour le responsive
+                justify-content: space-around;
                 gap: .5rem;
 
                 padding: .5rem;
@@ -215,8 +213,12 @@
                     &>figure {
 
                         figcaption {
-                            display: block;
+                            display: flex;
                             font-size: var(--typescale-small-text);
+
+                            p {
+                                font-size: smaller;
+                            }
                         }
                     }
         
@@ -238,7 +240,7 @@
                 // Partie de droite (résumé)
                 &>div:nth-child(3) {
                     align-self: center;
-                    flex-grow: 1;
+                    flex-grow: 0;
                     
                     .text-zone{
 
@@ -281,8 +283,16 @@
                                 width: 35px;
                                 height: 35px;
                             }
+
+                            // réajustement de la taille du point d'exclamation
+                            button:nth-child(4) {
+                                svg {
+                                    transform: scale(0.7);
+                                }
+                            }
                             
                             button:hover {
+                                transform: none;
                             }
     
                             button.active {
