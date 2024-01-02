@@ -9,14 +9,14 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "vite": "^5.0.8"
+    "vite": "^5.0.10"
   },
   "dependencies": {
-    "@studio-freight/lenis": "^1.0.29",
+    "@studio-freight/lenis": "^1.0.33",
     "animejs": "^3.2.2",
     "css-houdini-squircle": "^0.3.0",
-    "gsap": "^3.12.3",
-    "sass": "^1.69.5",
+    "gsap": "^3.12.4",
+    "sass": "^1.69.6",
     "swiper": "^11.0.5"
   }
 }

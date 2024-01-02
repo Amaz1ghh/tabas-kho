@@ -36,13 +36,16 @@ cadres.forEach(cadre => {
           txt.classList.remove('active')
         }
       })
+
+      // ### RESPONSIVE ###
+      if (window.innerWidth < 728) {
+        alert("couocu");
+      }
+
+
     })
   })
 });
 
 // RESOPNSIVE
-window.addEventListener('resize', (e) => {
-  if(window.innerWidth < 728) {
-    
-  }
-})
+var is_responsive = window.matchMedia("(max-width: 728px)")
