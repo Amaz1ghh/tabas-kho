@@ -43,7 +43,7 @@
       }
     }
 
-    a {
+    a{
       padding: .5rem 1rem;
       position: relative;
       transition: color .3s ease;
@@ -119,12 +119,18 @@
 
       li {
         width: 100%;
-        padding: 0.5rem 0;
         text-align: end;
-
         border-bottom: rgb(var(--color-secondary-light)) 1px solid;
       }
 
+      a {
+        display: inline-block;
+        opacity: 60%;
+        width: 100%;
+      }
+      a.active {
+        opacity: 100%;
+      }
       a::after {
         content: none;
       }
