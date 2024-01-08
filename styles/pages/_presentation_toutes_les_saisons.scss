@@ -20,7 +20,7 @@
 
         // lignes de séparation
         &>article+svg {
-            width: 70vw;
+            width: 70%;
         }
 
         // Style global des cadres de présentation des saisons
@@ -37,8 +37,9 @@
             gap: 2rem;
 
             border-radius: var(--border-radius);
+            transition: .5s;
 
-            // pour le responsive plus tard
+            // Pour le responsive plus tard
             &>span {
                 display: none;
             }
@@ -127,6 +128,15 @@
                     p.active {
                         display: block;
                     }
+
+                    // likes pour le responsive
+                    div:last-child {
+                        display: none;
+                        gap: 0rem;
+                        p {
+                            display: block;
+                        }
+                    }
                 }
 
                 // Mentions en bas
@@ -150,7 +160,6 @@
                     button:hover {
                         cursor: pointer;
                         transform: rotate(8deg);
-                        border: 1px black solid;
                     }
 
                     button.active {
@@ -167,16 +176,30 @@
     @media screen and (max-width: 728px) {
         
         main {
+
+            // lignes de séparation
+            &>article+svg {
+                width: 75%;
+            }
             
-            // styles des cadres de présentation
-            // Style global des cadres de présentation des saisons
+            // CADRES DE PRESENTATION DES SAISONS
             &>article {
-                width: 65%; // plus petit pour le responsive
-                justify-content: space-between;
+                width: 55%; // plus petit pour le responsive
+                justify-content: space-around;
                 gap: .5rem;
 
                 padding: .5rem;
                 margin: 1rem 0;
+
+                &.on-display {
+                    justify-content: flex-start;
+                    width: 75%;
+                }
+
+                // éléments cachés pour le responsive
+                .hidden {
+                    display: none !important;
+                }
 
                 // afficher les lignes verticales et les étoiles à droite
                 &>span {
@@ -187,12 +210,16 @@
                     height: 90px;
                     width: 1px;
                     background-color: black;
-                }
-                &>span::before {
-                    content:"";
-                    width: 6px;
-                    height: 6px;
-                    background-color: red;
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 3px;
+                        height: 3px;
+                        background-color: black;
+
+                        transform: translate(-30%);
+                    }
                 }
 
                 // Deux parties principales de description dans le cadre (poster + boutons)
@@ -204,7 +231,9 @@
                 &>div:first-child {
                     // N° saison
                     &>p:first-child {
-                        padding: 0 .5rem;
+                        padding-right: 0.5rem;
+                        padding-left: 0.5rem;
+
                         border-radius: var(--border-radius);
                         background-color: white;
                         
@@ -215,14 +244,19 @@
                     &>figure {
 
                         figcaption {
-                            display: block;
+                            display: flex;
                             font-size: var(--typescale-small-text);
+
+                            p {
+                                font-size: smaller;
+                            }
                         }
                     }
         
                     // bouton REGARDER
                     &>a {
-                        padding: 0 .5rem;
+                        padding-right: 0.5rem;
+                        padding-left: 0.5rem;
                         transition: 0.8s;
         
                         background-color: rgb(var(--color-accent-dark));
@@ -238,10 +272,60 @@
                 // Partie de droite (résumé)
                 &>div:nth-child(3) {
                     align-self: center;
-                    flex-grow: 1;
+                    flex-grow: 0;
+
+                    // si le texte doit être affiché à droite (car bouton cliqué)
+                    &.on-display {
+                        flex-direction: row;
+                        justify-content: start;
+                        width: 100%;
+
+                        .text-zone {
+                            display: flex !important;
+                            justify-content: space-between;
+                            order: 2;
+
+                            hr {
+                                display: none;
+                            }
+
+                            div:last-child.show {
+                                display: flex !important;
+                            }
+                        }
+
+                        // ligne de séparation boutons|texte
+                        span {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+
+                            display: block;
+                            height: 100px;
+                            width: 1px;
+                            background-color: black;
+
+                            &::before {
+                                content: "";
+                                display: block;
+                                width: 3px;
+                                height: 3px;
+                                background-color: black;
+        
+                                transform: translate(-30%);
+                            }
+                        }
+
+                        // zone des boutons
+                        div:last-child {
+                            gap: 0.5rem;
+
+                            &>div {
+                                gap: 0.6rem;
+                            }
+                        }
+                    }
                     
                     .text-zone{
-
                         display: none;
 
                         hr {
@@ -251,9 +335,9 @@
 
                         // texte
                         p {
+                            font-size: var(--typescale-responsive-small-text);
                             display: none;
                         }
-
                         p.active {
                             display: block;
                         }
@@ -264,7 +348,7 @@
                         justify-content: center;
 
                         // mentions en bas, à gauche
-                        &>div {
+                        &>div:first-child {
                             flex-direction: column;
                             justify-content: center;
                             align-items: center;
@@ -281,11 +365,16 @@
                                 width: 35px;
                                 height: 35px;
                             }
+
+                            // réajustement de la taille du point d'exclamation
+                            button:nth-child(4) {
+                                svg {
+                                    transform: scale(0.7);
+                                }
+                            }
                             
                             button:hover {
-                            }
-    
-                            button.active {
+                                transform: none;
                             }
                         }
 

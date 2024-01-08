@@ -17,6 +17,7 @@ class App {
     // this.loadLoaderOverlay();
     this.manageActorCards()
     this.priceSection();
+    this.navigationLinks()
   }
 
   initializeState() {
@@ -138,6 +139,53 @@ class App {
       }
     }, true)
 
+  }
+
+  navigationLinks() {
+    const navigationRect = document.querySelector("aside nav").getBoundingClientRect()
+    const navLinks = document.querySelectorAll("aside nav a");
+    const sections = document.querySelectorAll("section")
+    const indicator = document.querySelector("aside nav span")
+
+    window.onscroll = () => {
+      sections.forEach(section => {
+        let top = window.scrollY
+        let offset = section.offsetTop - 150
+        let height = section.offsetHeight
+        let id = section.getAttribute("id")
+
+        if (window.scrollY > window.innerHeight) {
+          indicator.style.opacity = 1;
+        } else {
+          indicator.style.opacity = 0;
+          navLinks.forEach(link => {
+            link.classList.remove("active")
+          })
+        }
+
+        if (top >= offset && top < offset + height) {
+          navLinks.forEach(link => {
+            if (link.getAttribute("href") == "#" + id) {
+              link.classList.add("active")
+
+              indicator.style.width = link.offsetWidth + "px"
+              indicator.style.height = link.offsetHeight + "px"
+              indicator.style.left = -(navigationRect.left - link.getBoundingClientRect().left) + "px"
+            } else {
+              link.classList.remove("active")
+            }
+          })
+        }
+      })
+    }
+
+    const shareButtonToggle = document.querySelector(".share-container button")
+    const shareButtons = document.querySelector(".share-container ul")
+
+    shareButtonToggle.addEventListener("click", e => {
+      e.preventDefault()
+      shareButtons.classList.toggle("show")
+    })
   }
 }
 

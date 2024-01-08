@@ -3,9 +3,10 @@ body > footer {
     // variables d'animation
     @keyframes squish {
         from, to { transform: scale(1, 1); }
-        25% { transform: scale(0.9, 1.1); }
-        50% { transform: scale(1.1, 0.9); }
-        75% { transform: scale(0.95, 1.05); }
+        20% { transform: scale(0.85, 1.15); }
+        40% { transform: scale(1.15, 0.85); }
+        60% { transform: scale(0.9, 1.1); }
+        80% { transform: scale(1.1, 0.9); }
     }
 
     border-top: 1px solid rgb(var(--color-secondary-light));
