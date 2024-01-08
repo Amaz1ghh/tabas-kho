@@ -39,7 +39,11 @@
             border-radius: var(--border-radius);
             transition: .5s;
 
-            // Pour le responsive plus tard
+            a:hover {
+                cursor: pointer;
+            }
+
+            // Pour le responsive plus tard (barres de séparation et étoiles de notation)
             &>span {
                 display: none;
             }
@@ -47,16 +51,11 @@
                 display: none;
             }
 
-            // Deux parties
+            // Deux parties du cadre
             &>div {
                 display: flex;
                 flex-direction: column;
-
                 gap: 1rem;
-
-                a:hover {
-                    cursor: pointer;
-                }
             }
 
             // Partie de gauche
@@ -89,14 +88,11 @@
                 &>a {
                     color: white;
                     padding: 0 4rem;
-
-                    transition: 0.8s;
-    
+                    transition: 0.5s;
                     background-color: rgb(var(--color-accent-dark));
                     border-radius: var(--border-radius);
 
                     &:hover {
-                        left: 300px;
                         box-shadow: inset 20rem 0 0 0 rgb(var(--color-primary-dark));
                     }
 
@@ -113,7 +109,7 @@
                     flex-direction: column;
                     justify-content: space-between;
                     flex-grow: 2;
-                    gap: 0.5rem;
+                    gap: 1rem;
 
                     hr {
                         border: 1px solid black;
@@ -125,6 +121,7 @@
                         display: none;
                     }
 
+                    // texte à afficher selon le bouton cliqué
                     p.active {
                         display: block;
                     }
@@ -132,7 +129,7 @@
                     // likes pour le responsive
                     div:last-child {
                         display: none;
-                        gap: 0rem;
+                        
                         p {
                             display: block;
                         }
@@ -156,12 +153,10 @@
                     button {
                         transition: 0.2s;
                     }
-                    
                     button:hover {
                         cursor: pointer;
                         transform: rotate(8deg);
                     }
-
                     button.active {
                         background-color: rgb(var(--color-accent-dark));
                     }
@@ -175,19 +170,13 @@
     // ###############################
     @media screen and (max-width: 728px) {
         
-        main {
-
-            // lignes de séparation
-            &>article+svg {
-                width: 75%;
-            }
-            
+        main {            
             // CADRES DE PRESENTATION DES SAISONS
             &>article {
                 width: 55%; // plus petit pour le responsive
                 justify-content: space-around;
                 gap: .5rem;
-
+                
                 padding: .5rem;
                 margin: 1rem 0;
 
