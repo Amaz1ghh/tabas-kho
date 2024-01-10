@@ -1,12 +1,11 @@
 #body_backstage{
     /**HEADER*/
     header{
-        height: 100vh;
-
         /**positionnement de l'entête (logo + titre du film et de la page)*/
         & > div{
+            margin: 0;
             display: flex;
-            direction: row;
+            flex-direction: row;
             & > div{
                 align-items: center;
                 margin-left: 5em;
@@ -24,30 +23,13 @@
 
         & + hr{
             color: #F67A60;
-            margin: 0px 50px;
+            margin: 0 3rem;
         }
     }
 
     /**MAIN*/
     main{
-        padding: var(--padding-desktop-horizontal);
-
-        /**paramètres des 2 articles côte à côte*/
-        & > div{
-            display: flex;
-            direction: row;
-            width: 83vw;
-            margin: 0 0 0 1.5rem;
-            & > article{
-                padding: 1.5rem;
-                margin: 3rem 0;
-            }
-        }
-
-        & > hr{
-            color: #F67A60;
-            margin: 0 9rem;
-        }
+        padding: 0 var(--padding-desktop-horizontal);
 
         /**paramètres de tout les articles*/
         article{
@@ -56,10 +38,46 @@
             padding-bottom: 2.5rem;
             border-radius: 0.6rem;
             width: 100%;
+            color: #1F1F1F;
             
             p{
                 margin-left: 1.5rem;
             }
+
+            summary{
+                padding: 0.4rem 25% 0 24%;
+                border-radius: 10px;
+                width: 50%;
+                height: 2.5rem;
+            }
+
+            & > hr{
+                margin: 0 6rem 0.6rem 0;
+            }
+        }
+
+        @media screen and (min-width: 729px){
+            /**paramètres des 2 articles côte à côte*/
+            & > div{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                margin: 0 0 0 1.5rem;
+                & > article{
+                    padding: 1.5rem;
+                    margin: 3rem 0;
+                    width: 49%;
+                    summary{
+                        width: 75%;
+                        padding: 0.4rem 37% 0 36%;
+                    }
+                }
+            }
+        }
+
+        & > hr{
+            color: #F67A60;
+            margin: 0 9rem;
         }
 
         h2{
@@ -73,8 +91,8 @@
         }
 
         img{
-            width: 30vh;
-            height: 10vw;
+            width: 30vw;
+            height: 10vh;
             margin: 0.5rem;
             margin-left: 1.5rem;
         }
@@ -93,15 +111,10 @@
         color: #1F1F1F;
         & > hr{
             color: #8D46C2;
-            margin: 0 100px 10px 0;
         }
 
         summary{
             background-color: #8D46C2;
-            padding: 0.4rem 0 0 12rem;
-            border-radius: 10px;
-            width: 25rem;
-            height: 2.5rem;
         }
 
         img{
@@ -113,32 +126,25 @@
     /**paramètres de chaque article sombre*/
     .articleSombre{
         background-color: #8D46C2;
-        color: #1F1F1F;
-        width: 100%;
         & > hr{
             color: #CE91FA;
-            margin: 0 6rem 0.6rem 0;
         }
 
         summary{
             background-color: #CE91FA;
-            padding: 0.4rem 0 0 12rem;
-            border-radius: 10px;
-            width: 25rem;
-            height: 2.5rem;
         }
 
         img{
             float: right;
-            width: 12rem;
-            height: 12rem;
+            width: 10vw;
+            height: 12vh;
         }
     }
 
-    /**alignement de l'article avec les autres*/
-    .decale_vers_droite{
-        margin-left: 4rem;
-        margin-right: 3.5rem;
+    @media screen and (min-width: 729px){
+        .decalage_a_droite_droite{
+            margin-left: 2%;
+        }
     }
 
     /**positionnement de l'image d'un article spécifique à gauche*/
@@ -147,30 +153,29 @@
             float: left;
         }
     }
-}
 
-// ###############################
-// # FORMAT RESPONSIVE TELEPHONE #
-// ###############################
+    // ###############################
+    // # FORMAT RESPONSIVE TELEPHONE #
+    // ###############################
 
-@media screen and (max-width: 728px) {
-    img{
-        width: 1rem;
-        height: 1rem;
-    }
-    main{
-        padding: 0;
-        article{
-            margin: 0;
-            width: 1vh;
+    @media screen and (max-width: 728px){
+        
+        header{
+            & > div{
+                flex-direction: column;
+            }
         }
 
-        & > div{
-            width: 83vw;
-            margin: 0 0 0 1.5rem;
-            & > article{
-                padding: 1.5rem;
-                margin: 3rem 0;
+        main{
+            /**paramètres des 2 articles côte à côte*/
+            & > div{
+                flex-direction: column;
+            }
+
+            article{
+                h2{
+                    font-size: var(--typescale-h3)
+                }
             }
         }
     }
