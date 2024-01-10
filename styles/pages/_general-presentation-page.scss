@@ -62,6 +62,7 @@
     background: linear-gradient(90deg, transparent 0%, rgb(var(--color-background)) 100%);
   }
 
+  // container
   & > div {
     width: 100%;
     height: 100vh;
@@ -73,6 +74,7 @@
     flex-direction: column;
     gap: 2rem;
 
+    // contents
     & > div {
       text-align: left;
       display: flex;
@@ -88,6 +90,7 @@
       }
     }
 
+    // line
     span {
       width: 2px;
       height: 100px;
@@ -107,7 +110,7 @@
       height: 20vh;
     }
     &:nth-child(4) span {
-      height: 5vh;
+      height: 10vh;
     }
   }
 }
@@ -222,7 +225,14 @@ aside {
   }
 }
 
+// small desktop
+@media only screen and (max-width: 1040px) {
+  .actors-grid {
+    padding: 0 1rem;
+  }
+}
 
+// Pour tablette
 @media only screen and (max-width: 768px) {
   .price-wrapper {
     height: auto;
@@ -273,6 +283,8 @@ aside {
   }
 }
 
+
+// Pour telephone
 @media only screen and (max-width: 426px) {
 
   .price-wrapper {
@@ -282,8 +294,10 @@ aside {
 
       & > div {
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
 
         img {
           place-self: center;
@@ -294,5 +308,10 @@ aside {
 
   .actors-grid {
     padding: 0;
+  }
+
+  aside {
+    flex-direction: column;
+    gap: 1rem;
   }
 }

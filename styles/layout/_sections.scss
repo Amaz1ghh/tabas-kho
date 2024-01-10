@@ -63,7 +63,7 @@ section {
   section {
     header {
       h2 {
-        font-size: var(--typescale-h3);
+        font-size: calc(var(--typescale-h2) - 1rem);
 
         span {
           display: block;
