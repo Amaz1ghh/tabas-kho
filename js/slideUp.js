@@ -12,7 +12,6 @@ export class SlideUp {
 
   initializeState() {
     const slideUpItems = document.querySelectorAll("[data-slide-up]")
-    console.log(slideUpItems)
 
     slideUpItems.forEach(item => {
       if (item.querySelectorAll('div, span').length > 0) {

@@ -37,7 +37,7 @@
             gap: 2rem;
 
             border-radius: var(--border-radius);
-            transition: .5s;
+            transition: transform .5s;
 
             a:hover {
                 cursor: pointer;
@@ -88,7 +88,7 @@
                 &>a {
                     color: white;
                     padding: 0 4rem;
-                    transition: 0.5s;
+                    transition: background-color 0.5s, box-shadow .5s;
                     background-color: rgb(var(--color-accent-dark));
                     border-radius: var(--border-radius);
 
@@ -151,7 +151,7 @@
                     gap: 1rem;
 
                     button {
-                        transition: 0.2s;
+                        transition: background-color 0.2s, transform .2s;
                     }
                     button:hover {
                         cursor: pointer;
@@ -182,7 +182,59 @@
 
                 &.on-display {
                     justify-content: flex-start;
-                    width: 75%;
+                    width: 85%;
+
+                    &>div:nth-child(3) {
+                        flex-direction: row;
+                        justify-content: start;
+                        width: 100%;
+
+                        .text-zone {
+                            display: flex !important;
+                            justify-content: space-between;
+                            order: 2;
+
+                            hr {
+                                display: none;
+                            }
+
+                            div:last-child.show {
+                                display: flex !important;
+                            }
+                        }
+
+                        // ligne de séparation boutons|texte
+                        span {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+
+                            display: block;
+                            height: 100px;
+                            width: 1px;
+                            background-color: black;
+
+                            &::before {
+                                content: "";
+                                display: block;
+                                width: 3px;
+                                height: 3px;
+                                background-color: black;
+        
+                                transform: translate(-30%);
+                            }
+                        }
+
+                        // zone des boutons
+                        div:last-child {
+                            gap: 0.5rem;
+
+                            &>div {
+                                justify-content: center;
+                                gap: 1rem;
+                                align-self: stretch;
+                            }
+                        }
+                    }
                 }
 
                 // éléments cachés pour le responsive
@@ -246,7 +298,7 @@
                     &>a {
                         padding-right: 0.5rem;
                         padding-left: 0.5rem;
-                        transition: 0.8s;
+                        transition: transform 0.8s, background-color 0.8s;
         
                         background-color: rgb(var(--color-accent-dark));
                         border-radius: var(--border-radius);
@@ -262,57 +314,6 @@
                 &>div:nth-child(3) {
                     align-self: center;
                     flex-grow: 0;
-
-                    // si le texte doit être affiché à droite (car bouton cliqué)
-                    &.on-display {
-                        flex-direction: row;
-                        justify-content: start;
-                        width: 100%;
-
-                        .text-zone {
-                            display: flex !important;
-                            justify-content: space-between;
-                            order: 2;
-
-                            hr {
-                                display: none;
-                            }
-
-                            div:last-child.show {
-                                display: flex !important;
-                            }
-                        }
-
-                        // ligne de séparation boutons|texte
-                        span {
-                            flex-grow: 0;
-                            flex-shrink: 0;
-
-                            display: block;
-                            height: 100px;
-                            width: 1px;
-                            background-color: black;
-
-                            &::before {
-                                content: "";
-                                display: block;
-                                width: 3px;
-                                height: 3px;
-                                background-color: black;
-        
-                                transform: translate(-30%);
-                            }
-                        }
-
-                        // zone des boutons
-                        div:last-child {
-                            gap: 0.5rem;
-
-                            &>div {
-                                gap: 0.6rem;
-                            }
-                        }
-                    }
                     
                     .text-zone{
                         display: none;
@@ -324,7 +325,7 @@
 
                         // texte
                         p {
-                            font-size: var(--typescale-responsive-small-text);
+                            font-size: var(--typescale-small-text);
                             display: none;
                         }
                         p.active {
