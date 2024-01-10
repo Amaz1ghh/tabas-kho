@@ -13,8 +13,10 @@ gsap.registerPlugin(ScrollTrigger)
 
 class App {
   constructor() {
+    this.loaderIsLoaded = false
     this.initializeState()
-    // this.loadLoaderOverlay();
+    this.loadLoaderOverlay();
+    this.loadHeader()
     this.manageActorCards()
     this.priceSection();
     this.navigationLinks()
@@ -28,64 +30,121 @@ class App {
     // })
   }
 
-  loadLoaderOverlay() {
-    const seriesContainer = document.querySelector(".series-container")
-    console.log(seriesData)
-
-    seriesData.map(serie => {
-      const p = document.createElement("p");
-      p.innerText = serie
-      if (serie === "Black Mirror") {
-        p.classList.add("the-serie")
-        splitLetter({el: p})
-      }
-      seriesContainer.appendChild(p)
+  loadHeader() {
+    splitLetter({
+      el: document.querySelector(".header-title"),
     })
+    const tl = gsap.timeline()
 
-    window.addEventListener("load", e => {
-      e.preventDefault()
-      const tl = gsap.timeline()
-      let i = 0;
-      const p = seriesContainer.querySelectorAll("p");
-      console.log(p)
+    console.log(this.loaderIsLoaded)
 
-      tl.set(".series-container", {
-        y: "100%"
+    tl.fromTo(document.querySelectorAll(".header-title [data-letter]"), {
+      opacity: 0,
+      y: -10,
+      rotate: 5,
+    }, {
+      opacity: 1,
+      y: 0,
+      rotate: 0,
+      stagger: .04,
+      duration: .4,
+      ease: "power4.inOut",
+      delay: !this.loaderIsLoaded ? 7.5 : .2
+    })
+    tl.from(".header-info > *", {
+      opacity: 0,
+      y: 10,
+      stagger: .1,
+      delay: .2
+    })
+    tl.from(".header .glow", {
+      width: 0,
+      height: 0,
+    }, "-=.2")
+    tl.from(".header .background", {
+      opacity: 0,
+      ease: "power4.inOut",
+      duration: 2
+    }, "-=1")
+  }
+
+  loadLoaderOverlay() {
+    console.log("coucou", this.loaderIsLoaded)
+    if (window.localStorage.getItem("loader") === null && window.innerWidth > 1040) {
+      const seriesContainer = document.querySelector(".series-container")
+
+      seriesData.map(serie => {
+        const p = document.createElement("p");
+        p.innerText = serie
+        if (serie === "Black Mirror") {
+          p.classList.add("the-serie")
+          splitLetter({el: p})
+        }
+        seriesContainer.appendChild(p)
       })
 
-      tl.to(".series-container", {
+      window.addEventListener("load", e => {
+        e.preventDefault()
+        const tl = gsap.timeline()
+        let i = 0;
+        const seriesP = seriesContainer.querySelectorAll("p");
+
+        tl.set(".series-container", {
+          y: "50%"
+        })
+
+        tl.to(".series-container", {
           y: "-75%",
-          duration: 6,
+          duration: 4,
         })
-        .from(".series-container p", {
-          opacity: 0,
-          scale: 1.05,
-          color: "rgba(var(--color-text), .6)",
-          stagger: {
-            amount: 4,
-          },
-        }, "-=5")
-        .to(".the-serie span", {
-          // color: "rgb(var(--color-accent))",
-          // stagger: {
-          //   amount: .3,
-          // }
-          onStart: () => {
-            document.querySelector(".the-serie").classList.add("anim")
-          }
-        })
-        .to(".series-container p", {
-          color: "transparent",
-          stagger: {
-            amount: .5
-          }
-        })
-        .to(".load-overlay", {
-          opacity: 0,
-          zIndex: -10,
-          delay: .5,
-        })
-    })
+          .from(".series-container p", {
+            opacity: 0,
+            scale: 1.05,
+            color: "rgba(var(--color-text), .6)",
+            stagger: {
+              amount: 3,
+            },
+          }, "-=4")
+          .to(".the-serie span", {
+            // color: "rgb(var(--color-accent))",
+            // stagger: {
+            //   amount: .3,
+            // }
+            onStart: () => {
+              document.querySelector(".the-serie").classList.add("anim")
+            }
+          })
+          .to(".the-serie span", {
+            color: "rgb(var(--color-accent))",
+            stagger: {
+              amount: .2,
+            }
+          })
+          .to(".the-serie span", {
+            color: "rgb(var(--color-text))",
+            stagger: {
+              amount: .2,
+            },
+          }, "-=.6")
+          .to(".series-container p", {
+            color: "transparent",
+            stagger: {
+              amount: .5
+            }
+          })
+          .to(".load-overlay", {
+            opacity: 0,
+            zIndex: -10,
+            delay: .5,
+          })
+      })
+
+      window.localStorage.setItem("loader", '1')
+    } else {
+      const loader = document.querySelector(".load-overlay")
+      loader.style.display = "none"
+      this.loaderIsLoaded = true
+    }
   }
 
   manageActorCards() {
@@ -120,22 +179,33 @@ class App {
 
   }
 
-  priceSection() {
+  priceSectionScroll() {
     const prices = gsap.utils.toArray(".price-wrapper > div")
+
+    console.log("Enable price section horizontal scroll")
+    // horizontal scroll
+    gsap.to(prices, {
+      xPercent: -100 * (prices.length - 1),
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".price-wrapper",
+        pin: true,
+        scrub: .2,
+        snap: 1 / (prices.length - 1),
+        end: () => "+=" + document.querySelector(".price-wrapper").offsetWidth
+      }
+    })
+  }
+
+  priceSection() {
+
+    if (window.innerWidth > 768) {
+      this.priceSectionScroll()
+    }
+
     window.addEventListener("resize", ev => {
       if (window.innerWidth > 768) {
-        // horizontal scroll
-        gsap.to(prices, {
-          xPercent: -100 * (prices.length - 1),
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".price-wrapper",
-            pin: true,
-            scrub: .2,
-            snap: 1 / (prices.length - 1),
-            end: () => "+=" + document.querySelector(".price-wrapper").offsetWidth
-          }
-        })
+       this.priceSectionScroll()
       }
     }, true)
 

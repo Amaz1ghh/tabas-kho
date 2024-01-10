@@ -16,6 +16,7 @@
 
     p {
       width: 100%;
+      font-size: var(--typescale-lead);
       margin-bottom: 1rem;
     }
 
@@ -23,6 +24,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+    }
+
+    .stars img {
+      width: 30px;
+      height: 30px;
     }
   }
 }
