@@ -1,6 +1,5 @@
 import gsap from "gsap";
 
-
 const hamburgerMenu = document.querySelector('.hamburger-menu')
 const navButtons = document.querySelector('.navbar ul')
 
