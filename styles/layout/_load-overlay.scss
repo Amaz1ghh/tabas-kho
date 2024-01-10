@@ -1,7 +1,7 @@
 
 .load-overlay {
   //opacity: 0;
-  display: none;
+  //display: none;
   width: 100vw;
   height: 100vh;
   min-height: 100svh;
@@ -9,7 +9,7 @@
   z-index: 10000;
   overflow: hidden;
 
-  //display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
