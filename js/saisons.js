@@ -1,26 +1,47 @@
 // IMPORTS
 import {LenisSmoothScroll} from "./smooth-scroll.js";
-import { SlideUp } from "./slideUp";
-new LenisSmoothScroll();
-new SlideUp();
+import {SlideUp} from "./slideUp";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
+
+// Animation d'entrée des cadres
+var cadreElements = document.querySelectorAll(".cadre_presentation_saison");
+
+cadreElements.forEach((cadre) => {
+
+  gsap.from(cadre, {
+    scrollTrigger: {
+      start: "top bottom",
+      trigger: cadre,
+      toggleActions: "restart none none none",
+    },
+    x: 200,
+    duration: .8,
+    ease: "power1.out",
+    opacity: 0,
+  })
+
+})
+
+
+
 
 /********************************************
  * DEFINITION DES FONCTIONS
  */
-
 const get_siblings = (elem) => {
-  // create an empty array
   let siblings = [];
-  // if no parent, return empty list
+  // cas où il n'y a pas de parent. Ne retourne rien...
   if (!elem.parentNode) {
       return siblings;
   }
 
-  // first child of the parent node
+  // Premier enfant
   let sibling = elem.parentNode.firstElementChild;
-  // loop through next siblings until `null`
+  // boucler jusqu'à l'enfant "NULL"
   do {
-      // push sibling to array
+      // ajout de l'enfant à la liste
       if (sibling != elem) {
           siblings.push(sibling);
       }
@@ -28,7 +49,9 @@ const get_siblings = (elem) => {
   return siblings;
 };
 
-// CADRES DE PRESENTATION DES SAISON
+/********************************************
+ * DEFINITION DES EVENEMENTS
+ */
 // chaque cadre
 const cadres = document.querySelectorAll('.cadre_presentation_saison')
 
@@ -113,3 +136,6 @@ cadres.forEach(cadre => {
 
 // RESOPNSIVE
 // var is_responsive = window.matchMedia("(max-width: 728px)")
+
+new LenisSmoothScroll();
+new SlideUp();
