@@ -10,14 +10,12 @@ body > footer {
     }
 
     border-top: 1px solid rgb(var(--color-secondary-light));
-
     margin-top: 4rem;
     padding: 2rem var(--padding-desktop-horizontal);
     display: block;
 
     &>div { // wraper du footer
         display: flex;
-
         gap: 2rem;
         align-items: center;
         flex-direction: column;
@@ -27,18 +25,27 @@ body > footer {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-
             width: 100%;
 
+            // logo tabas'kho
             &>div:first-child {
                 display: flex;
                 flex-direction: row;
                 gap: 1rem;
             }
-    
+            
+            // blocs des liens utiles
             &>article {
                 display: flex;
                 flex-direction: column;
+
+                a {
+                    border-radius: var(--border-radius);
+                    transition: .3s;
+                }
+                a:hover {
+                    padding-left: .5rem;
+                }
             }
     
         }
@@ -48,6 +55,7 @@ body > footer {
             flex-direction: row;
             gap: 2rem;
 
+            // logo des réseaux sociaux
             a {
                 display: flex;
                 align-items: center;
@@ -65,14 +73,14 @@ body > footer {
         }
     }
 
+    // FORMAT REPSONSIVE
     @media screen and (max-width: 728px) {
-
         &>div>div:first-child {
             flex-direction: column;
             align-items: flex-start;
             gap: 3rem;
             padding-left: 3rem;
-            margin-bottom: 2rem;
+            padding-bottom: 2rem;
         }
 
     }
