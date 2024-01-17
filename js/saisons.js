@@ -5,28 +5,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/all";
 gsap.registerPlugin(ScrollTrigger);
 
-// Animation d'entrée des cadres
-var cadreElements = document.querySelectorAll(".cadre_presentation_saison");
-
-cadreElements.forEach((cadre) => {
-
-  gsap.from(cadre, {
-    scrollTrigger: {
-      start: "top bottom",
-      trigger: cadre,
-      toggleActions: "restart none none none",
-    },
-    x: 200,
-    duration: .8,
-    ease: "power1.out",
-    opacity: 0,
-  })
-
-})
-
-
-
-
 /********************************************
  * DEFINITION DES FONCTIONS
  */
@@ -131,6 +109,29 @@ cadres.forEach(cadre => {
         cadre.classList.remove('on-display');
       }
     })
+  })
+});
+
+// Animation d'entrée des cadres + stylysation (alternance des sombre clair à chaque cadre)
+var cadreElements = document.querySelectorAll(".cadre_presentation_saison");
+
+cadreElements.forEach((cadre, idx_cadre) => {
+
+  // alternance sombre/clair des cadres
+  if (idx_cadre%2) {
+    cadre.classList.add('even');
+  }
+
+  gsap.from(cadre, {
+    scrollTrigger: {
+      start: "top bottom",
+      trigger: cadre,
+      toggleActions: "restart none none none",
+    },
+    x: 200,
+    duration: .8,
+    ease: "power1.out",
+    opacity: 0,
   })
 });
 

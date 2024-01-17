@@ -9,22 +9,17 @@
             font-size: var(--typescale-h3);
             font-weight: 700;
         }
-    
-        // Teintes de violet (bg) alternées entre chaque saison
-        &>article:nth-child(even){
-            background-color: rgba(var(--color-primary), 0.8);
-        }
-        &>article:nth-child(odd) {
-            background-color: rgb(var(--color-primary));
-        }
 
-        // lignes de séparation
+        // lignes de séparation après chaque cadre
         &>article+svg {
             width: 70%;
         }
 
         // Style global des cadres de présentation des saisons
         &>article {
+
+            background-color: rgba(var(--color-primary), 0.8);
+
             color: black;
             font-weight: 500;
 
@@ -37,7 +32,11 @@
             gap: 2rem;
 
             border-radius: var(--border-radius);
-            transition: transform .5s;
+            transition: scale .5s, width .5s, height .5s;
+
+            &.even {
+                background-color: rgb(var(--color-primary));
+            }
 
             a:hover {
                 cursor: pointer;
@@ -76,6 +75,11 @@
 
                 // poster + légende
                 &>figure {
+
+                    img {
+                        width: auto;
+                        max-height: 12rem;
+                    }
 
                     figcaption {
                         display: flex;
@@ -173,7 +177,7 @@
         main {            
             // CADRES DE PRESENTATION DES SAISONS
             &>article {
-                width: 55%; // plus petit pour le responsive
+                width: 65%; // plus petit pour le responsive
                 justify-content: space-around;
                 gap: .5rem;
                 
@@ -272,17 +276,21 @@
                 &>div:first-child {
                     // N° saison
                     &>p:first-child {
-                        padding-right: 0.5rem;
-                        padding-left: 0.5rem;
+                        padding: 0 .5rem;
 
                         border-radius: var(--border-radius);
                         background-color: white;
-                        
-                        font-weight: 400;
                     }
 
                     // poster + légende
                     &>figure {
+
+                        img {
+                            width: auto;
+                            max-width: 6rem;
+                            height: auto;
+                            max-height: 9rem;
+                        }
 
                         figcaption {
                             display: flex;
@@ -290,14 +298,16 @@
 
                             p {
                                 font-size: smaller;
+                                font-weight: 700;
                             }
                         }
                     }
         
                     // bouton REGARDER
                     &>a {
-                        padding-right: 0.5rem;
-                        padding-left: 0.5rem;
+                        padding: 0 1rem;
+
+                        font-size: var(--typescale-small-text);
                         transition: transform 0.8s, background-color 0.8s;
         
                         background-color: rgb(var(--color-accent-dark));
