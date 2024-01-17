@@ -64,8 +64,6 @@ body > header {
     transform: translate(-50%, -50%);
     background: rgb(var(--color-primary));
     filter: blur(500px);
-    -ms-filter: blur(500px);
-    -webkit-filter: blur(500px);
   }
 
   // background image
