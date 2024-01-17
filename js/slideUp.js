@@ -45,7 +45,7 @@ export class SlideUp {
           trigger: item,
           start: "top bottom-=80px",
           toggleActions: "restart play pause reset",
-          markers: true
+          markers: false
         },
         duration: 0.1,
         opacity: 1,
@@ -59,7 +59,7 @@ export class SlideUp {
           trigger: item,
           start: "top bottom-=80px",
           toggleActions: "restart play pause reset",
-          markers: true
+          markers: false
         },
         opacity: 1,
         duration: .5,

@@ -167,7 +167,7 @@ class App {
           trigger: card,
           start: "top-=60px bottom-=80px",
           toggleActions: "restart pause pause reset",
-          markers: true,
+          markers: false,
         },
         opacity: 0,
         y: 40,
