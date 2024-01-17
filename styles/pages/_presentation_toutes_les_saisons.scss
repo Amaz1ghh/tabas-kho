@@ -76,16 +76,28 @@
                 // poster + légende
                 &>figure {
 
-                    img {
-                        width: auto;
-                        max-height: 12rem;
+                    div {
+
+                        position: relative;
+
+                        img {
+                            width: auto;
+                            max-height: 12rem;
+                        }
+
+                        svg {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            transform: translate(-50%, -50%);
+                        }
                     }
 
                     figcaption {
                         display: flex;
                         width: 100%;
                         justify-content: space-between;
-                    }
+                    }    
                 }
     
                 // bouton REGARDER
