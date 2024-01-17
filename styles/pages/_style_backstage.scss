@@ -16,13 +16,13 @@
                 }
 
                 & > hr{
-                    color: #1F1F1F;
+                    border-color: #1F1F1F;
                 }
             }
         }
 
         & + hr{
-            color: #F67A60;
+            border-color: #F67A60;
             margin: 0 3rem;
         }
     }
@@ -47,7 +47,7 @@
             summary{
                 padding: 0.4rem 25% 0 24%;
                 border-radius: 10px;
-                width: 50%;
+                width: 0;
                 height: 2.5rem;
             }
 
@@ -68,7 +68,7 @@
                     margin: 3rem 0;
                     width: 49%;
                     summary{
-                        width: 75%;
+                        width: 0;
                         padding: 0.4rem 37% 0 36%;
                     }
                 }
@@ -76,7 +76,7 @@
         }
 
         & > hr{
-            color: #F67A60;
+            border-color: #F67A60;
             margin: 0 9rem;
         }
 
@@ -110,7 +110,7 @@
         background-color: #CE91FA;
         color: #1F1F1F;
         & > hr{
-            color: #8D46C2;
+            border-color: #8D46C2;
         }
 
         summary{
@@ -127,7 +127,7 @@
     .articleSombre{
         background-color: #8D46C2;
         & > hr{
-            color: #CE91FA;
+            border-color: #CE91FA;
         }
 
         summary{
@@ -167,12 +167,26 @@
         }
 
         main{
+
+            padding-right: var(--padding-desktop-horizontal);
+
             /**paramètres des 2 articles côte à côte*/
             & > div{
                 flex-direction: column;
             }
 
+            & > hr{
+                width: 15rem;
+                margin-left: 4rem;
+            }
+
             article{
+                width: 95%;
+
+                summary{
+                    width: 10rem
+                }
+
                 h2{
                     font-size: var(--typescale-h3)
                 }
