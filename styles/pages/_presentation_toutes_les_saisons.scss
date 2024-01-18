@@ -77,19 +77,37 @@
                 &>figure {
 
                     div {
-
                         position: relative;
 
                         img {
                             width: auto;
                             max-height: 12rem;
+                            border-radius: var(--border-radius);
+                            transition: filter .3s;
                         }
 
                         svg {
+                            opacity: 0;
                             position: absolute;
-                            top: 0;
-                            left: 0;
+                            top: 50%;
+                            left: 50%;
                             transform: translate(-50%, -50%);
+                        }
+
+                        // en survol
+                        &:hover {
+                            cursor: pointer;
+                            img {
+                                filter: brightness(.3);
+                            }
+                            svg {
+                                opacity: 1;
+                                transition: opacity .7s;
+
+                                &>path {
+                                    fill: rgb(var(--color-primary));
+                                }
+                            }
                         }
                     }
 
