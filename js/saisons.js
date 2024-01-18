@@ -28,9 +28,10 @@ const get_siblings = (elem) => {
 };
 
 /********************************************
- * DEFINITION DES EVENEMENTS
- */
-// chaque cadre
+ * DEFINITION DES EVENEMENTS && ANIMATIONS
+ ********************************************/
+
+// CADRES DE PRESENTATION DES SAISONS
 const cadres = document.querySelectorAll('.cadre_presentation_saison')
 
 // affichage des textes après avoir cliqué sur les boutons
@@ -112,7 +113,7 @@ cadres.forEach(cadre => {
   })
 });
 
-// Animation d'entrée des cadres + stylysation (alternance des sombre clair à chaque cadre)
+// ANIMATION d'entrée des cadres + stylysation (alternance des sombre clair à chaque cadre)
 var cadreElements = document.querySelectorAll(".cadre_presentation_saison");
 
 cadreElements.forEach((cadre, idx_cadre) => {
@@ -135,8 +136,23 @@ cadreElements.forEach((cadre, idx_cadre) => {
   })
 });
 
-// RESOPNSIVE
-// var is_responsive = window.matchMedia("(max-width: 728px)")
+// VIDEO DE BACKGROUND DANS LE HEADER
+const video_bg = document.querySelector("header video.background");
+video_bg.playbackRate = 1;
+
+  // animation de la vidéo
+const video_tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: video_bg,
+    start: "top top",
+    end: "center top",
+    scrub: true,
+  },
+})
+
+video_tl.to(video_bg, {
+  opacity: 0,
+})
 
 new LenisSmoothScroll();
 new SlideUp();

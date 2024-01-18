@@ -66,7 +66,7 @@ body > header {
     filter: blur(500px);
   }
 
-  // background image
+  // background image et video
   .background {
     width: 105vw;
     height: 110vh;
@@ -77,7 +77,11 @@ body > header {
 
     object-fit: cover;
     opacity: .2;
+  }
 
+  // video background slmt
+  video.background {
+    opacity: .6;
   }
 
   &::after {
