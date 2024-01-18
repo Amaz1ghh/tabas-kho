@@ -7,7 +7,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 /********************************************
  * DEFINITION DES FONCTIONS
- */
+ ********************************************/
 const get_siblings = (elem) => {
   let siblings = [];
   // cas où il n'y a pas de parent. Ne retourne rien...
@@ -47,6 +47,9 @@ cadres.forEach(cadre => {
     
     btn.addEventListener('click', (e) => {
       e.preventDefault()
+
+      const test = document.createElement('iframe');
+      console.log(test);
 
       // condition de responsive
       is_responsive = window.matchMedia("(max-width: 728px)")
