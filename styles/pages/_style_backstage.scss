@@ -1,53 +1,196 @@
 #body_backstage{
+    /**HEADER*/
     header{
+        /**positionnement de l'entête (logo + titre du film et de la page)*/
         & > div{
+            margin: 0;
             display: flex;
-            direction: row;
+            flex-direction: row;
             & > div{
                 align-items: center;
                 margin-left: 5em;
                 & > h2{
                     font-size: 4em;
                     text-align: center;
-                    margin-bottom: 1px;
                     color: #CE91FA;
                 }
 
                 & > hr{
-                    color: #1F1F1F;
-                    height: 2px;
+                    border-color: #1F1F1F;
                 }
             }
         }
 
-        hr{
-            color: #F67A60;
+        & + hr{
+            border-color: #F67A60;
+            margin: 0 3rem;
         }
     }
 
+    /**MAIN*/
     main{
-        & > hr{
-            color: #F67A60;
-            margin: 0px 150px;
+        padding: 0 var(--padding-desktop-horizontal);
+
+        /**paramètres de tout les articles*/
+        article{
+            margin: 3rem 1.5rem;
+            padding: 1rem;
+            padding-bottom: 2.5rem;
+            border-radius: 0.6rem;
+            width: 100%;
+            color: #1F1F1F;
+            
+            p{
+                margin-left: 1.5rem;
+            }
+
+            summary{
+                padding: 0.4rem 25% 0 24%;
+                border-radius: 10px;
+                width: 0;
+                height: 2.5rem;
+            }
+
+            & > hr{
+                margin: 0 6rem 0.6rem 0;
+            }
         }
 
-        article{
-            margin: 50px 120px;
-            padding: 10px;
-            border-radius: 10px;
+        @media screen and (min-width: 729px){
+            /**paramètres des 2 articles côte à côte*/
+            & > div{
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                margin: 0 0 0 1.5rem;
+                & > article{
+                    padding: 1.5rem;
+                    margin: 3rem 0;
+                    width: 49%;
+                    summary{
+                        width: 0;
+                        padding: 0.4rem 37% 0 36%;
+                    }
+                }
+            }
+        }
+
+        & > hr{
+            border-color: #F67A60;
+            margin: 0 9rem;
         }
 
         h2{
             font-size: var(--typescale-h2);
         }
+
+        h5{
+            font-size: 1.4rem;
+            line-height: 1.5rem;
+            margin-bottom: 0.4rem;
+        }
+
+        img{
+            width: 30vw;
+            height: 10vh;
+            margin: 0.5rem;
+            margin-left: 1.5rem;
+        }
     }
 
-    .articleClair{
+    /**CLASSES*/
+    /**pour chaque balise <p> contenant la date de publication - positionnement de la date en haut à droite de chaque article*/
+    .datePublication{
+        float: right;
+        margin-right: 1rem;
+    }
+
+    /**paramètres de chaque article clair*/
+    .articleClair{  
         background-color: #CE91FA;
         color: #1F1F1F;
+        & > hr{
+            border-color: #8D46C2;
+        }
+
+        summary{
+            background-color: #8D46C2;
+        }
+
+        img{
+            float: left;
+            height: 42vh;
+        }
     }
+
+    /**paramètres de chaque article sombre*/
     .articleSombre{
         background-color: #8D46C2;
-        color: #1F1F1F;
+        & > hr{
+            border-color: #CE91FA;
+        }
+
+        summary{
+            background-color: #CE91FA;
+        }
+
+        img{
+            float: right;
+            width: 10vw;
+            height: 12vh;
+        }
+    }
+
+    @media screen and (min-width: 729px){
+        .decalage_a_droite_droite{
+            margin-left: 2%;
+        }
+    }
+
+    /**positionnement de l'image d'un article spécifique à gauche*/
+    .img_gauche{
+        img{
+            float: left;
+        }
+    }
+
+    // ###############################
+    // # FORMAT RESPONSIVE TELEPHONE #
+    // ###############################
+
+    @media screen and (max-width: 728px){
+        
+        header{
+            & > div{
+                flex-direction: column;
+            }
+        }
+
+        main{
+
+            padding-right: var(--padding-desktop-horizontal);
+
+            /**paramètres des 2 articles côte à côte*/
+            & > div{
+                flex-direction: column;
+            }
+
+            & > hr{
+                width: 15rem;
+                margin-left: 4rem;
+            }
+
+            article{
+                width: 95%;
+
+                summary{
+                    width: 10rem
+                }
+
+                h2{
+                    font-size: var(--typescale-h3)
+                }
+            }
+        }
     }
 }

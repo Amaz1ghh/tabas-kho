@@ -43,7 +43,7 @@
       }
     }
 
-    a {
+    a{
       padding: .5rem 1rem;
       position: relative;
       transition: color .3s ease;
@@ -74,14 +74,72 @@
 
   // FORMAT RESPONSIVE
   @media screen and (max-width: 728px) {
+    
+    // croix
     .hamburger-menu {
       cursor: pointer;
-      display: block;
+      display: flex;
+      flex-direction: column;
+      svg {
+        transition: .5s;
+      }
+
+      // menu hamburger cliqué
+      &.active {
+        svg:first-child {
+          transform: rotate(45deg) translateX(3px) translateY(11px)
+        }
+        svg:last-child  {
+          transform: rotate(-45deg)
+        }
+      }
     }
 
+    // liste en deça de la croix
     ul {
-      display: none;
+      z-index: 1000;
+      position: absolute;
+      bottom: 0;
+      width: 100vw;
+      left: 0;
+
+      background-color: rgba(var(--color-background), .8);
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .6s ease, transform .6s ease;
+
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+
+      li:first-child {
+        border-top: rgb(var(--color-secondary-light)) 1px solid;
+      }
+
+      li {
+        width: 100%;
+        text-align: end;
+        border-bottom: rgb(var(--color-secondary-light)) 1px solid;
+      }
+
+      a {
+        display: inline-block;
+        opacity: 60%;
+        width: 100%;
+      }
+      a.active {
+        opacity: 100%;
+      }
+      a::after {
+        content: none;
+      }
+
+      &.active {
+        pointer-events: auto;
+        opacity: 1;
+        transform: translateY(100%);
+      }
     }
-    
   }
 }

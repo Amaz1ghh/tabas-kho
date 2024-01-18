@@ -20,15 +20,17 @@
   --typescale-h2: 4.1875rem;
   --typescale-h3: 3.1875rem;
   --typescale-lead: 1.3125rem;
+  --typescale-small-text: 0.75rem;
 
   --border-radius: 5px;
 
   --padding-desktop-horizontal: 10rem;
-  --padding-phone-horizontal: 1.25rem;
 
   // FORMAT RESPONSIVE
   @media screen and (max-width: 728px) {
     --padding-desktop-horizontal: 1.25rem;
+    --typescale-h3: 1.75rem;
+    --typescale-lead: 1.000rem;
   }
 }
 

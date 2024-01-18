@@ -1,36 +1,26 @@
-// IMPORTS
-import anime from "animejs";
+import gsap from "gsap";
 
-// FONCTIONNEMENT
 const hamburgerMenu = document.querySelector('.hamburger-menu')
+const navButtons = document.querySelector('.navbar ul')
 
 hamburgerMenu.addEventListener('click', (e) => {
   e.preventDefault();
 
-  hamburgerMenu.querySelector('svg').setAttribute('height', '35')
+  hamburgerMenu.classList.toggle('active');
+  navButtons.classList.toggle('active');
 
-  anime({
-    targets: '.hamburger-menu path:first-child',
-    d: [
-      { value: [
-        'M1 1 L21 21']
-      },
-    ],
-    easing: 'easeOutQuad',
-    duration: 500,    
 });
 
-anime({
-    targets: '.hamburger-menu path:last-child',
-    d: [
-        { value: [
-          'M1 21 L21 1']
-        },
-      ],
-    easing: 'easeOutQuad',
-    duration: 500,
-})
-  
-  
-})
 
+// animation de la navbar au scroll
+gsap.to('.navbar', {
+  scrollTrigger: {
+    trigger: ".navbar",
+    start: "10px top",
+    toggleActions: "restart pause reverse pause",
+    scrub: true,
+  },
+  background: "rgba(var(--color-background), .8)",
+  backdropFilter: "blur(10px)",
+  borderBottom: "1px solid rgb(var(--color-secondary))"
+})

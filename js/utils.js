@@ -7,8 +7,6 @@ export function splitLetter({ el=null, selector=null, lines=false }) {
     element = document.querySelector(selector)
   }
 
-  console.log(element, el)
-
   if (lines) {
     const lines = element.querySelectorAll('div, span')
     console.log(lines)

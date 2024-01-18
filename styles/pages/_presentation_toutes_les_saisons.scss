@@ -1,54 +1,65 @@
 #body_presentation_saisons {
 
-    @keyframes pulse{
-        50%  {transform: scale(1.2);}
-    }
-
     // FORMAT DESKTOP
     &>main {
+
         padding: 0 var(--padding-desktop-horizontal);
 
-        h1 {
+        h3 {
             font-size: var(--typescale-h3);
             font-weight: 700;
         }
-    
-        // Teintes de violet (bg) alternées entre chaque saison
-        &>article:nth-child(even){
-            background-color: rgba(var(--color-primary), 0.8);
-        }
-        &>article:nth-child(odd) {
-            background-color: rgb(var(--color-primary));
+
+        // lignes de séparation après chaque cadre
+        &>article+svg {
+            width: 70%;
         }
 
         // Style global des cadres de présentation des saisons
         &>article {
+
+            background-color: rgba(var(--color-primary), 0.8);
+
             color: black;
+            font-weight: 500;
 
             padding: 1rem;
-            margin: 2.5rem 0;
+            margin: 1rem 0;
 
             display: flex;
+            justify-content: center;
+            align-items: center;
             gap: 2rem;
 
             border-radius: var(--border-radius);
+            transition: scale .5s, width .5s, height .5s;
 
-            // Deux parties
+            &.even {
+                background-color: rgb(var(--color-primary));
+            }
+
+            a:hover {
+                cursor: pointer;
+            }
+
+            // Pour le responsive plus tard (barres de séparation et étoiles de notation)
+            &>span {
+                display: none;
+            }
+            &>svg:last-child {
+                display: none;
+            }
+
+            // Deux parties du cadre
             &>div {
                 display: flex;
                 flex-direction: column;
-
                 gap: 1rem;
-
-                a:hover {
-                    cursor: pointer;
-                }
             }
 
             // Partie de gauche
             &>div:first-child {
-
-                flex-basis: 15%;
+                flex-basis: 20%;
                 flex-shrink: 0;
                 flex-grow: 0;
 
@@ -57,7 +68,6 @@
 
                 // N° saison
                 &>p:first-child {
-
                     padding: 0 2rem;
                     border-radius: var(--border-radius);
                     background-color: white;     
@@ -66,43 +76,74 @@
                 // poster + légende
                 &>figure {
 
+                    div {
+                        position: relative;
+
+                        img {
+                            width: auto;
+                            max-height: 12rem;
+                            border-radius: var(--border-radius);
+                            transition: filter .3s;
+                        }
+
+                        svg {
+                            opacity: 0;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                        }
+
+                        // en survol
+                        &:hover {
+                            cursor: pointer;
+                            img {
+                                filter: brightness(.3);
+                            }
+                            svg {
+                                opacity: 1;
+                                transition: opacity .7s;
+
+                                &>path {
+                                    fill: rgb(var(--color-primary));
+                                }
+                            }
+                        }
+                    }
+
                     figcaption {
                         display: flex;
                         width: 100%;
                         justify-content: space-between;
-                    }
+                    }    
                 }
     
                 // bouton REGARDER
                 &>a {
                     color: white;
-                    padding: 0 1rem;
-
-                    transition: 0.5s;
-    
+                    padding: 0 4rem;
+                    transition: background-color 0.5s, box-shadow .5s;
                     background-color: rgb(var(--color-accent-dark));
                     border-radius: var(--border-radius);
 
                     &:hover {
-                        left: 300px;
-                        box-shadow: inset 10rem 0 0 0 rgb(var(--color-primary-dark));
+                        box-shadow: inset 20rem 0 0 0 rgb(var(--color-primary-dark));
                     }
 
                 }
             }
 
             // Partie de droite (résumé)
-            &>div:last-child {
-
+            &>div:nth-child(3) {
+                align-self: stretch;
                 flex-grow: 1;
                 
                 .text-zone{
-
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
-                    flex-grow: 1;
-                    gap: 0.5rem;
+                    flex-grow: 2;
+                    gap: 1rem;
 
                     hr {
                         border: 1px solid black;
@@ -114,8 +155,18 @@
                         display: none;
                     }
 
+                    // texte à afficher selon le bouton cliqué
                     p.active {
                         display: block;
+                    }
+
+                    // likes pour le responsive
+                    div:last-child {
+                        display: none;
+                        
+                        p {
+                            display: block;
+                        }
                     }
                 }
 
@@ -134,14 +185,12 @@
                     gap: 1rem;
 
                     button {
-                        transition: 0.2s;
+                        transition: background-color 0.2s, transform .2s;
                     }
-                    
                     button:hover {
                         cursor: pointer;
                         transform: rotate(8deg);
                     }
-
                     button.active {
                         background-color: rgb(var(--color-accent-dark));
                     }
@@ -150,22 +199,228 @@
         }
     }
 
-    // FORMAT RESPONSIVE TELEPHONE
-    @media screen and (max-width: 428px) {
+    // ###############################
+    // # FORMAT RESPONSIVE TELEPHONE #
+    // ###############################
+    @media screen and (max-width: 728px) {
         
-        main {
-            
+        main {            
+            // CADRES DE PRESENTATION DES SAISONS
             &>article {
-                background-color: red;
-                visibility: hidden;
+                width: 65%; // plus petit pour le responsive
+                justify-content: space-around;
+                gap: .5rem;
+                
+                padding: .5rem;
+                margin: 1rem 0;
+
+                &.on-display {
+                    justify-content: flex-start;
+                    width: 85%;
+
+                    &>div:nth-child(3) {
+                        flex-direction: row;
+                        justify-content: start;
+                        width: 100%;
+
+                        .text-zone {
+                            display: flex !important;
+                            justify-content: space-between;
+                            order: 2;
+
+                            hr {
+                                display: none;
+                            }
+
+                            div:last-child.show {
+                                display: flex !important;
+                            }
+                        }
+
+                        // ligne de séparation boutons|texte
+                        span {
+                            flex-grow: 0;
+                            flex-shrink: 0;
+
+                            display: block;
+                            height: 100px;
+                            width: 1px;
+                            background-color: black;
+
+                            &::before {
+                                content: "";
+                                display: block;
+                                width: 3px;
+                                height: 3px;
+                                background-color: black;
+        
+                                transform: translate(-30%);
+                            }
+                        }
+
+                        // zone des boutons
+                        div:last-child {
+                            gap: 0.5rem;
+
+                            &>div {
+                                justify-content: center;
+                                gap: 1rem;
+                                align-self: stretch;
+                            }
+                        }
+                    }
+                }
+
+                // éléments cachés pour le responsive
+                .hidden {
+                    display: none !important;
+                }
+
+                // afficher les lignes verticales et les étoiles à droite
+                &>span {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+
+                    display: block;
+                    height: 90px;
+                    width: 1px;
+                    background-color: black;
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 3px;
+                        height: 3px;
+                        background-color: black;
+
+                        transform: translate(-30%);
+                    }
+                }
+
+                // Deux parties principales de description dans le cadre (poster + boutons)
+                &>div {
+                    gap: 0.6rem;
+                }
+
+                // Partie de gauche
+                &>div:first-child {
+                    // N° saison
+                    &>p:first-child {
+                        padding: 0 .5rem;
+
+                        border-radius: var(--border-radius);
+                        background-color: white;
+                    }
+
+                    // poster + légende
+                    &>figure {
+
+                        img {
+                            width: auto;
+                            max-width: 6rem;
+                            height: auto;
+                            max-height: 9rem;
+                        }
+
+                        figcaption {
+                            display: flex;
+                            font-size: var(--typescale-small-text);
+
+                            p {
+                                font-size: smaller;
+                                font-weight: 700;
+                            }
+                        }
+                    }
+        
+                    // bouton REGARDER
+                    &>a {
+                        padding: 0 1rem;
+
+                        font-size: var(--typescale-small-text);
+                        transition: transform 0.8s, background-color 0.8s;
+        
+                        background-color: rgb(var(--color-accent-dark));
+                        border-radius: var(--border-radius);
+
+                        &:hover {
+                            left: 300px;
+                            box-shadow: inset 10rem 0 0 0 rgb(var(--color-primary-dark));
+                        }
+                    }
+                }
+
+                // Partie de droite (résumé)
+                &>div:nth-child(3) {
+                    align-self: center;
+                    flex-grow: 0;
+                    
+                    .text-zone{
+                        display: none;
+
+                        hr {
+                            border: 1px solid black;
+                            width: 80%;
+                        }
+
+                        // texte
+                        p {
+                            font-size: var(--typescale-small-text);
+                            display: none;
+                        }
+                        p.active {
+                            display: block;
+                        }
+                    }
+
+                    // Mentions en bas
+                    &>div{
+                        justify-content: center;
+
+                        // mentions en bas, à gauche
+                        &>div:first-child {
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+    
+                            &>svg:first-child {
+                                display: none;
+                            }
+    
+                            p {
+                                display: none;
+                            }
+    
+                            button {
+                                width: 35px;
+                                height: 35px;
+                            }
+
+                            // réajustement de la taille du point d'exclamation
+                            button:nth-child(4) {
+                                svg {
+                                    transform: scale(0.7);
+                                }
+                            }
+                            
+                            button:hover {
+                                transform: none;
+                            }
+                        }
+
+                        // étoiles, en bas à droite
+                        &>svg {
+                            display: none;
+                        }
+                    }    
+                }
+
+                // étoiles totalement à droite pour le responsive
+                &>svg:last-child {
+                    flex-grow: 0;
+                    display: block;
+                }
             }
-
-
         }
-
-
     }
-
-
-
 }

@@ -3,20 +3,19 @@ body > footer {
     // variables d'animation
     @keyframes squish {
         from, to { transform: scale(1, 1); }
-        25% { transform: scale(0.9, 1.1); }
-        50% { transform: scale(1.1, 0.9); }
-        75% { transform: scale(0.95, 1.05); }
+        20% { transform: scale(0.9, 1.1); }
+        40% { transform: scale(1.1, 0.9); }
+        60% { transform: scale(0.9, 1.1); }
+        80% { transform: scale(1.1, 0.9); }
     }
 
     border-top: 1px solid rgb(var(--color-secondary-light));
-
     margin-top: 4rem;
     padding: 2rem var(--padding-desktop-horizontal);
     display: block;
 
     &>div { // wraper du footer
         display: flex;
-
         gap: 2rem;
         align-items: center;
         flex-direction: column;
@@ -26,18 +25,27 @@ body > footer {
             flex-direction: row;
             justify-content: space-between;
             align-items: center;
-
             width: 100%;
 
+            // logo tabas'kho
             &>div:first-child {
                 display: flex;
                 flex-direction: row;
                 gap: 1rem;
             }
-    
+            
+            // blocs des liens utiles
             &>article {
                 display: flex;
                 flex-direction: column;
+
+                a {
+                    border-radius: var(--border-radius);
+                    transition: .3s;
+                }
+                a:hover {
+                    transform: translate(10px);
+                }
             }
     
         }
@@ -47,6 +55,7 @@ body > footer {
             flex-direction: row;
             gap: 2rem;
 
+            // logo des réseaux sociaux
             a {
                 display: flex;
                 align-items: center;
@@ -62,5 +71,17 @@ body > footer {
                 }
             }
         }
+    }
+
+    // FORMAT REPSONSIVE
+    @media screen and (max-width: 728px) {
+        &>div>div:first-child {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 3rem;
+            padding-left: 3rem;
+            padding-bottom: 2rem;
+        }
+
     }
 }
