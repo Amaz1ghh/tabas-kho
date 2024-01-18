@@ -47,7 +47,9 @@
             align-self: center;
             width: 100%;
             padding: 25px;
-
+            position: sticky;
+            top: 1rem;
+            z-index: 2;
         }
         .filtre2{
             display: flex;
@@ -56,13 +58,21 @@
             order: 2;
             padding: 25px;
             position: sticky;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 3rem;
+            &>details{
+                display: flex;
+                flex-direction: column;
+            }
         }
         &>section{
             display: flex;
             flex-direction: row;
-            width: 70%;
             flex-wrap: wrap;
-            justify-content: flex-end;
+            justify-content: space-between;
+            position: relative;
+            left: 15rem;
             order: 3;
             // Teintes de violet (bg) alternées entre chaque commentaire
             &>article:nth-child(even){
@@ -205,14 +215,148 @@
     }
 
     // FORMAT RESPONSIVE TELEPHONE
-    @media screen and (max-width: 428px) {
+    @media screen and (max-width: 728px) {
         
-        main {
-            
+    main {            
+            // CADRES DE PRESENTATION DES SAISONS
             &>article {
-                background-color: red;
-                visibility: hidden;
+                width: 65%; // plus petit pour le responsive
+                justify-content: space-around;
+                gap: .5rem;
+                
+                padding: .5rem;
+                margin: 1rem 0;
+
+                &.on-display {
+                    justify-content: flex-start;
+                    width: 85%;
+
+                    &>div:nth-child(3) {
+                        flex-direction: row;
+                        justify-content: start;
+                        width: 100%;
+
+                        .text-zone {
+                            display: flex !important;
+                            justify-content: space-between;
+                            order: 2;
+
+                            hr {
+                                display: none;
+                            }
+
+                            div:last-child.show {
+                                display: flex !important;
+                            }
+                        }
+
+                // afficher les lignes verticales et les étoiles à droite
+                &>span {
+                    flex-grow: 0;
+                    flex-shrink: 0;
+
+                    display: block;
+                    height: 90px;
+                    width: 1px;
+                    background-color: black;
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        width: 3px;
+                        height: 3px;
+                        background-color: black;
+
+                        transform: translate(-30%);
+                    }
+                }
+
+                // Deux parties principales de description dans le cadre (poster + boutons)
+                &>div {
+                    gap: 0.6rem;
+                }
+
+                // Partie de gauche
+                &>div:first-child {
+                    // N° saison
+                    &>p:first-child {
+                        padding: 0 .5rem;
+
+                        border-radius: var(--border-radius);
+                        background-color: white;
+                    }
+
+                    // poster + légende
+                    &>figure {
+
+                        img {
+                            width: auto;
+                            max-width: 6rem;
+                            height: auto;
+                            max-height: 9rem;
+                        }
+
+                        figcaption {
+                            display: flex;
+                            font-size: var(--typescale-small-text);
+
+                            p {
+                                font-size: smaller;
+                                font-weight: 700;
+                            }
+                        }
+                    }
+
+                    // Mentions en bas
+                    &>div{
+                        justify-content: center;
+
+                        // mentions en bas, à gauche
+                        &>div:first-child {
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+    
+                            &>svg:first-child {
+                                display: none;
+                            }
+    
+                            p {
+                                display: none;
+                            }
+    
+                            button {
+                                width: 35px;
+                                height: 35px;
+                            }
+
+                            // réajustement de la taille du point d'exclamation
+                            button:nth-child(4) {
+                                svg {
+                                    transform: scale(0.7);
+                                }
+                            }
+                            
+                            button:hover {
+                                transform: none;
+                            }
+                        }
+
+                        // étoiles, en bas à droite
+                        &>svg {
+                            display: none;
+                        }
+                    }    
+                }
+
+                // étoiles totalement à droite pour le responsive
+                &>svg:last-child {
+                    flex-grow: 0;
+                    display: block;
+                    }
+                }
             }
         }
     }
+}
 }
