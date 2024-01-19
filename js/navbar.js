@@ -10,7 +10,6 @@ hamburgerMenu.addEventListener('click', (e) => {
 
   hamburgerMenu.classList.toggle('active');
   navButtons.classList.toggle('active');
-
 });
 
 
