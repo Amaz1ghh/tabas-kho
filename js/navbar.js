@@ -1,4 +1,6 @@
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 
 const hamburgerMenu = document.querySelector('.hamburger-menu')
 const navButtons = document.querySelector('.navbar ul')
