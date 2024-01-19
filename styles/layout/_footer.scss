@@ -44,6 +44,7 @@ body > footer {
                     transition: .3s;
                 }
                 a:hover {
+                    cursor: pointer;
                     transform: translate(10px);
                 }
             }
@@ -82,6 +83,5 @@ body > footer {
             padding-left: 3rem;
             padding-bottom: 2rem;
         }
-
     }
 }

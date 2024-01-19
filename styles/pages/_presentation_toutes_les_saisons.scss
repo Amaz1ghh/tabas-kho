@@ -186,6 +186,17 @@
 
                     button {
                         transition: background-color 0.2s, transform .2s;
+                        position: relative;
+
+                        // Flèches de retour pour le responsive plus tard
+                        &>svg:last-child {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            opacity: 0;
+                            transition: opacity .5s;
+                        }
                     }
                     button:hover {
                         cursor: pointer;
@@ -394,17 +405,31 @@
                             button {
                                 width: 35px;
                                 height: 35px;
+
+                                &>svg:last-child {
+                                    width: 85%;
+                                    height: 85%;
+                                }
                             }
 
-                            // réajustement de la taille du point d'exclamation
-                            button:nth-child(4) {
-                                svg {
+                            // réajustement de la taille du point d'exclamation (moments forts)
+                            button[data-button="moments"]{
+                                svg:first-child {
                                     transform: scale(0.7);
                                 }
                             }
-                            
+
                             button:hover {
                                 transform: none;
+                            }
+
+                            button.active {
+                                svg:first-child {
+                                    opacity: 0;
+                                }
+                                svg:last-child {
+                                    opacity: 1;
+                                }
                             }
                         }
 

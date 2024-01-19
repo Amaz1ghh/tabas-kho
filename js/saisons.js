@@ -48,9 +48,6 @@ cadres.forEach(cadre => {
     btn.addEventListener('click', (e) => {
       e.preventDefault()
 
-      const test = document.createElement('iframe');
-      console.log(test);
-
       // condition de responsive
       is_responsive = window.matchMedia("(max-width: 728px)")
       // div de droite dans le cadre de présentation
