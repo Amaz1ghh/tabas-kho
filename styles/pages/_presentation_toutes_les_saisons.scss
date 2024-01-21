@@ -8,6 +8,8 @@
         h3 {
             font-size: var(--typescale-h3);
             font-weight: 700;
+            
+            text-shadow: 1px 1px 8px rgb(var(--color-accent-dark));
         }
 
         // lignes de séparation après chaque cadre
@@ -18,7 +20,7 @@
         // Style global des cadres de présentation des saisons
         &>article {
 
-            background-color: rgba(var(--color-primary), 0.8);
+            background-color: rgba(var(--color-primary), .8);
 
             color: black;
             font-weight: 500;
@@ -35,7 +37,7 @@
             transition: scale .5s, width .5s, height .5s;
 
             &.even {
-                background-color: rgb(var(--color-primary));
+                background-color: rgba(var(--color-primary), 1);
             }
 
             a:hover {
@@ -67,7 +69,7 @@
                 justify-content: space-between;
 
                 // N° saison
-                &>p:first-child {
+                &>h4:first-child {
                     padding: 0 2rem;
                     border-radius: var(--border-radius);
                     background-color: white;     
@@ -151,12 +153,14 @@
                     }
 
                     // texte
-                    p {
+                    &>p {
                         display: none;
                     }
-
+                    &>p::first-letter {
+                        font-size: 1.2rem;
+                    }
                     // texte à afficher selon le bouton cliqué
-                    p.active {
+                    &>p.active {
                         display: block;
                     }
 
@@ -316,7 +320,7 @@
                 // Partie de gauche
                 &>div:first-child {
                     // N° saison
-                    &>p:first-child {
+                    &>h4:first-child {
                         padding: 0 .5rem;
 
                         border-radius: var(--border-radius);
@@ -375,11 +379,11 @@
                         }
 
                         // texte
-                        p {
+                        &>p {
                             font-size: var(--typescale-small-text);
                             display: none;
                         }
-                        p.active {
+                        &>p.active {
                             display: block;
                         }
                     }

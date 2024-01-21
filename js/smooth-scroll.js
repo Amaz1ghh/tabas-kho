@@ -1,6 +1,5 @@
 import Lenis from "@studio-freight/lenis";
 
-
 export class LenisSmoothScroll {
   constructor() {
     this.initLenis()
