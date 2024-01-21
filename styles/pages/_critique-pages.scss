@@ -42,7 +42,7 @@
         .filtre1{
             display: flex;
             flex-direction: row;
-            justify-content: center;
+            justify-content: right;
             order: 1;
             align-self: center;
             width: 100%;
@@ -217,8 +217,22 @@
     // FORMAT RESPONSIVE TELEPHONE
     @media screen and (max-width: 728px) {
         
-    main {            
-            // CADRES DE PRESENTATION DES SAISONS
+    main {     
+            display: flex;
+            flex-direction: column;
+            .filtre2{
+                display: flex;
+                flex-direction: row;
+                position: static;
+            }
+            .filtre1{
+                position: static;
+                margin: 25px;
+            }
+            section{
+                position: relative;
+                left: 0rem;
+            }
             &>article {
                 width: 65%; // plus petit pour le responsive
                 justify-content: space-around;
@@ -249,6 +263,12 @@
                                 display: flex !important;
                             }
                         }
+                    }
+                }
+                // éléments cachés pour le responsive
+                .hidden {
+                    display: none !important;
+                }
 
                 // afficher les lignes verticales et les étoiles à droite
                 &>span {
@@ -306,6 +326,30 @@
                             }
                         }
                     }
+                }
+
+                // Partie de droite (résumé)
+                &>div:nth-child(3) {
+                    align-self: center;
+                    flex-grow: 0;
+                    
+                    .text-zone{
+                        display: none;
+
+                        hr {
+                            border: 1px solid black;
+                            width: 80%;
+                        }
+
+                        // texte
+                        p {
+                            font-size: var(--typescale-small-text);
+                            display: none;
+                        }
+                        p.active {
+                            display: block;
+                        }
+                    }
 
                     // Mentions en bas
                     &>div{
@@ -353,10 +397,8 @@
                 &>svg:last-child {
                     flex-grow: 0;
                     display: block;
-                    }
                 }
             }
         }
     }
-}
 }
