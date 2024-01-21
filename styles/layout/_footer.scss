@@ -75,7 +75,7 @@ body > footer {
     }
 
     // FORMAT REPSONSIVE
-    @media screen and (max-width: 728px) {
+    @media screen and (max-width: 428px) {
         &>div>div:first-child {
             flex-direction: column;
             align-items: flex-start;
