@@ -1,4 +1,9 @@
 #body_backstage{
+
+    // ##################
+    // # FORMAT DESKTOP #
+    // ##################
+
     /**HEADER*/
     header{
         /**positionnement de l'entête (logo + titre du film et de la page)*/
@@ -9,8 +14,12 @@
             & > div{
                 align-items: center;
                 margin-left: 5em;
+                text-align: center;
+                & > h1{
+                    font-size: var(--typescale-h1);
+                }
                 & > h2{
-                    font-size: 4em;
+                    font-size: var(--typescale-h2);
                     text-align: center;
                     color: #CE91FA;
                 }
@@ -21,6 +30,7 @@
             }
         }
 
+        /**colore la ligne qui sépare le header du main*/
         & + hr{
             border-color: #F67A60;
             margin: 0 3rem;
@@ -31,78 +41,107 @@
     main{
         padding: 0 var(--padding-desktop-horizontal);
 
-        /**paramètres de tout les articles*/
+        /**paramètres de tous les articles*/
         article{
             margin: 3rem 1.5rem;
-            padding: 1rem;
-            padding-bottom: 2.5rem;
-            border-radius: 0.6rem;
+            border-radius: 10px;
             width: 100%;
             color: #1F1F1F;
             
             p{
-                margin-left: 1.5rem;
+                margin: 0 1rem 0 2.5rem;
             }
 
+            hr{
+                margin-left: 1rem;
+            }
+
+            /**agrandissement de la puce pour faire comme un bouton*/
             summary{
-                padding: 0.4rem 25% 0 24%;
+                padding: 1rem 26% 0 23%;
                 border-radius: 10px;
                 width: 0;
                 height: 2.5rem;
+                margin: 1rem 1rem 0 1rem;
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            details{
+                padding-bottom: 1.5rem;
             }
 
             & > hr{
-                margin: 0 6rem 0.6rem 0;
+                margin: 0 10rem 1.5rem 0.5rem;
             }
         }
 
+        /**les 2 articles ne devront être côte à côte qu'en format desktop (>= 729px)*/
         @media screen and (min-width: 729px){
-            /**paramètres des 2 articles côte à côte*/
+            /**paramètres et dimensions pour les 2 articles côte à côte*/
             & > div{
                 display: flex;
                 flex-direction: row;
                 width: 100%;
                 margin: 0 0 0 1.5rem;
+
                 & > article{
-                    padding: 1.5rem;
                     margin: 3rem 0;
                     width: 49%;
                     summary{
-                        width: 0;
-                        padding: 0.4rem 37% 0 36%;
+                        padding: 1rem 39% 0 34%;
                     }
+                }
+
+                /**la barre ne s'affichera que si les 2 articles ne sont plus côte à côte*/
+                & > hr{
+                    display: none;
                 }
             }
         }
 
+        /**paramètres des lignes qui séparent les articles entre eux*/
         & > hr{
             border-color: #F67A60;
             margin: 0 9rem;
         }
 
+        div > hr{
+            border-color: #F67A60;
+            margin: 0 9rem;
+        }
+
+        /**taille des police en format desktop*/
         h2{
             font-size: var(--typescale-h2);
+            margin: 1rem 1rem 0 1rem;
         }
 
         h5{
             font-size: 1.4rem;
             line-height: 1.5rem;
-            margin-bottom: 0.4rem;
+            margin: 0 1rem 0.4rem 1rem;
         }
 
         img{
             width: 30vw;
             height: 10vh;
-            margin: 0.5rem;
-            margin-left: 1.5rem;
+            margin: 0.5rem 0.5rem 0 2.5rem;
         }
     }
 
     /**CLASSES*/
+
     /**pour chaque balise <p> contenant la date de publication - positionnement de la date en haut à droite de chaque article*/
     .datePublication{
         float: right;
         margin-right: 1rem;
+        margin: 1rem 2rem 0 0;
+        @media screen and (max-width: 728px){
+            margin: 0.5rem 1rem 0 0;
+        }
     }
 
     /**paramètres de chaque article clair*/
@@ -118,7 +157,10 @@
         }
 
         img{
-            float: left;
+            /**l'image ne sera en float que si le format est desktop*/
+            @media screen and (min-width: 729px){
+                float: left;
+            }
             height: 42vh;
         }
     }
@@ -126,6 +168,7 @@
     /**paramètres de chaque article sombre*/
     .articleSombre{
         background-color: #8D46C2;
+        
         & > hr{
             border-color: #CE91FA;
         }
@@ -136,21 +179,35 @@
 
         img{
             float: right;
+            margin: 0.5rem 2rem 0.5rem 0.5rem;
             width: 10vw;
-            height: 12vh;
+            height: 20vh;
+            /**l'image ne sera en float que si le format est desktop, sinon on applique le format portable*/
+            @media screen and (max-width: 728px){
+                float: none;
+                width: 72vw;
+                height: 40vh;
+                margin: 0.5rem 1rem 0 1.5rem;
+            }
         }
     }
 
+    /**cette application n'existera que pour le format desktop*/
     @media screen and (min-width: 729px){
-        .decalage_a_droite_droite{
+        /**décale l'article droite des 2 articles côte à côte vers la droite pour laisser de l'espace entre les 2*/
+        .decalage_a_droite{
             margin-left: 2%;
         }
     }
 
-    /**positionnement de l'image d'un article spécifique à gauche*/
-    .img_gauche{
-        img{
-            float: left;
+    /**l'image ne sera en float que si le format est desktop*/
+    @media screen and (min-width: 729px){
+        /**positionnement de l'image d'un article spécifique à gauche*/
+        .img_gauche{
+            img{
+                float: left;
+                margin: 0.5rem 0.5rem 0 2.5rem;
+            }
         }
     }
 
@@ -160,35 +217,93 @@
 
     @media screen and (max-width: 728px){
         
+        /**HEADER*/
         header{
+
+            padding: 0;
+            margin: 0;
+
+            /**le logo disparaît*/
+            svg{
+                display: none;
+            }
+
             & > div{
-                flex-direction: column;
+                padding: 0;
+
+                & > div{
+                    margin: 0 0 0 1.5rem;
+                    padding: 0;
+
+                    /**réduction des polices*/
+                    & > h1{
+                        font-size: 3.3rem;
+                    }
+    
+                    & > h2{
+                        font-size: 3.3rem;
+                        margin-bottom: 0;
+                    }
+                }
             }
         }
 
+        /**MAIN*/
         main{
 
-            padding-right: var(--padding-desktop-horizontal);
+            padding: 0 2rem;
 
-            /**paramètres des 2 articles côte à côte*/
+            /**les 2 articles côte à côte seront en colonne*/
             & > div{
                 flex-direction: column;
             }
 
+            /**redimensionnement des lignes séparatrices des articles*/
             & > hr{
                 width: 15rem;
-                margin-left: 4rem;
+                margin-left: 2.7rem;
             }
 
+            div > hr{
+                width: 15rem;
+                margin-left: 2.7rem;
+            }
+
+            /**redimensionnement des articles en format portable*/
             article{
-                width: 95%;
+                margin: 2.5rem 0;
+
+                & > hr{
+                    margin-left: 0.5rem;
+                    width: 18rem;
+                }
 
                 summary{
-                    width: 10rem
+                    margin: 0;
+                    padding: 0.7rem 51% 0.3rem 49%;
+                    border-radius: 0 0 10px 10px;
+                }
+
+                details{
+                    padding-bottom: 0;
+
+                    & > img{
+                        margin: 0.5rem 1rem 0 1.5rem;
+                        width: 72vw;
+                        height: 5vh;
+                    }
                 }
 
                 h2{
-                    font-size: var(--typescale-h3)
+                    font-size: 3.5rem;
+                }
+
+                h3{
+                    margin-bottom: 0;
+                }
+
+                p{
+                    margin-left: 1.5rem;
                 }
             }
         }
