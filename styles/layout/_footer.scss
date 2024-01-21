@@ -82,6 +82,10 @@ body > footer {
             gap: 3rem;
             padding-left: 3rem;
             padding-bottom: 2rem;
+
+            article {
+                gap: 1rem;
+            }
         }
     }
 }
