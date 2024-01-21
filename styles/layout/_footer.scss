@@ -44,6 +44,7 @@ body > footer {
                     transition: .3s;
                 }
                 a:hover {
+                    cursor: pointer;
                     transform: translate(10px);
                 }
             }
@@ -74,14 +75,17 @@ body > footer {
     }
 
     // FORMAT REPSONSIVE
-    @media screen and (max-width: 728px) {
+    @media screen and (max-width: 428px) {
         &>div>div:first-child {
             flex-direction: column;
             align-items: flex-start;
             gap: 3rem;
             padding-left: 3rem;
             padding-bottom: 2rem;
-        }
 
+            article {
+                gap: 1rem;
+            }
+        }
     }
 }

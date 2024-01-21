@@ -81,7 +81,7 @@ body > header {
 
   // video background slmt
   video.background {
-    opacity: .6;
+    opacity: .4;
   }
 
   &::after {
@@ -97,7 +97,7 @@ body > header {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 428px) {
   body > header {
     justify-content: flex-start;
 

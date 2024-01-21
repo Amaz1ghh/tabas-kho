@@ -8,6 +8,8 @@
         h3 {
             font-size: var(--typescale-h3);
             font-weight: 700;
+            
+            text-shadow: 1px 1px 8px rgb(var(--color-accent-dark));
         }
 
         // lignes de séparation après chaque cadre
@@ -18,7 +20,7 @@
         // Style global des cadres de présentation des saisons
         &>article {
 
-            background-color: rgba(var(--color-primary), 0.8);
+            background-color: rgba(var(--color-primary), .8);
 
             color: black;
             font-weight: 500;
@@ -35,7 +37,7 @@
             transition: scale .5s, width .5s, height .5s;
 
             &.even {
-                background-color: rgb(var(--color-primary));
+                background-color: rgba(var(--color-primary), 1);
             }
 
             a:hover {
@@ -67,7 +69,7 @@
                 justify-content: space-between;
 
                 // N° saison
-                &>p:first-child {
+                &>h4:first-child {
                     padding: 0 2rem;
                     border-radius: var(--border-radius);
                     background-color: white;     
@@ -151,12 +153,14 @@
                     }
 
                     // texte
-                    p {
+                    &>p {
                         display: none;
                     }
-
+                    &>p::first-letter {
+                        font-size: 1.2rem;
+                    }
                     // texte à afficher selon le bouton cliqué
-                    p.active {
+                    &>p.active {
                         display: block;
                     }
 
@@ -186,6 +190,17 @@
 
                     button {
                         transition: background-color 0.2s, transform .2s;
+                        position: relative;
+
+                        // Flèches de retour pour le responsive plus tard
+                        &>svg:last-child {
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            opacity: 0;
+                            transition: opacity .5s;
+                        }
                     }
                     button:hover {
                         cursor: pointer;
@@ -202,7 +217,7 @@
     // ###############################
     // # FORMAT RESPONSIVE TELEPHONE #
     // ###############################
-    @media screen and (max-width: 728px) {
+    @media screen and (max-width: 428px) {
         
         main {            
             // CADRES DE PRESENTATION DES SAISONS
@@ -305,7 +320,7 @@
                 // Partie de gauche
                 &>div:first-child {
                     // N° saison
-                    &>p:first-child {
+                    &>h4:first-child {
                         padding: 0 .5rem;
 
                         border-radius: var(--border-radius);
@@ -364,11 +379,11 @@
                         }
 
                         // texte
-                        p {
+                        &>p {
                             font-size: var(--typescale-small-text);
                             display: none;
                         }
-                        p.active {
+                        &>p.active {
                             display: block;
                         }
                     }
@@ -394,17 +409,31 @@
                             button {
                                 width: 35px;
                                 height: 35px;
+
+                                &>svg:last-child {
+                                    width: 85%;
+                                    height: 85%;
+                                }
                             }
 
-                            // réajustement de la taille du point d'exclamation
-                            button:nth-child(4) {
-                                svg {
+                            // réajustement de la taille du point d'exclamation (moments forts)
+                            button[data-button="moments"]{
+                                svg:first-child {
                                     transform: scale(0.7);
                                 }
                             }
-                            
+
                             button:hover {
                                 transform: none;
+                            }
+
+                            button.active {
+                                svg:first-child {
+                                    opacity: 0;
+                                }
+                                svg:last-child {
+                                    opacity: 1;
+                                }
                             }
                         }
 
